@@ -1,9 +1,9 @@
 Algoritmo "Hospital Santa Aurora - Plantao"
 
-// CADASTRO DOS MEDICOS(LINHA 124-363)
-// CONSULTAR OS TURNOS (LINHA 366-809)
-// PESQUISA/ALTERA플O DE ID LINHA (813-1180)
-// RESUMO FINAL DO PLANTAO  (LINHA 1191-1624)
+// CADASTRO DOS MEDICOS   (LINHA 127-422)
+// CONSULTAR SEMANA (LINHA 426-870)
+// PESQUISA/ALTERA플O DE ID LINHA (872-1247)
+// RESUMO FINAL DO PLANTAO  (LINHA 1250-1683)
 
 Var
 
@@ -108,7 +108,7 @@ Inicio
       escreval("             MENU PRINCIPAL")
       escreval("----------------------------------------")
       escreval("1 - Cadastrar um medico")
-      escreval("2 - Consultar os turnos")
+      escreval("2 - Consultar semana")
       escreval("3 - Procurar ID")
       escreval("0 - Finalizar o plantao")
       escreval("----------------------------------------")
@@ -123,7 +123,7 @@ Inicio
 
       fimenquanto
 
-      // CADASTRO DOS MEDICOS   (LINHA 124-363)
+      // CADASTRO DOS MEDICOS   (LINHA 127-422)
 
       se (menu = 1) entao
 
@@ -421,8 +421,7 @@ Inicio
 
       fimse
 
-      // CONSULTAR OS TURNOS (LINHA 366-809)
-
+      // CONSULTAR SEMANA (LINHA 426-870)
 
       se (menu = 2) entao
 
@@ -869,7 +868,7 @@ Inicio
       fimse
 
 
-      //PESQUISA/ALTERA플O DE ID LINHA (814-1181)
+      // PESQUISA/ALTERA플O DE ID LINHA (872-1247)
 
       se (menu = 3) entao
          limpatela
@@ -1247,7 +1246,7 @@ Inicio
 
    fimenquanto
 
-   // RESUMO FINAL DO PLANTAO  (LINHA 1192-1625)
+   // RESUMO FINAL DO PLANTAO  (LINHA 1250-1683)
 
    limpatela
 
