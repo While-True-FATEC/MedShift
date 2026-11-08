@@ -32,6 +32,9 @@ Var
    especialidade_medico: vetor[1..25] de inteiro
    disp_medico: vetor[1..25] de inteiro
 
+   semana: vetor[1..25] de inteiro
+   diasemana: inteiro
+
    // VETORES DE QUANTIDADES POR TURNO
    // POSICAO 1 = MANHA
    // POSICAO 2 = TARDE
@@ -143,7 +146,34 @@ Inicio
                escreval("           CADASTRO DO MEDICO")
                escreval("----------------------------------------")
 
+
+               // ESCOLHA DA SEMANA
+               escreval(" ")
+               escreval("Qual o dia da semana deseja cadastrar esse médico:")
+               escreval("1 - Segunda-Feira")
+               escreval("2 - Terça-Feira")
+               escreval("3 - Quarta-Feira")
+               escreval("4 - Quinta-Feira")
+               escreval("5 - Sexta-Feira")
+               escreva("Escolha uma opcao: ")
+               leia(diasemana)
+
+               enquanto (diasemana < 1) ou (diasemana > 5) faca
+
+                  escreval("Dia da Semana invalido!")
+                  escreva("Digite entre 1 e 5: ")
+                  leia(diasemana)
+
+               fimenquanto
+
+
                // ESCOLHA DA ESPECIALIDADE
+
+               limpatela
+
+               escreval("----------------------------------------")
+               escreval("           CADASTRO DO MEDICO")
+               escreval("----------------------------------------")
 
                escreval(" ")
                escreval("Especialidade:")
@@ -193,6 +223,12 @@ Inicio
 
                   // CADASTRO DA DISPONIBILIDADE
 
+                  limpatela
+
+                  escreval("----------------------------------------")
+                  escreval("           CADASTRO DO MEDICO")
+                  escreval("----------------------------------------")
+
                   escreval(" ")
                   escreval("Disponibilidade:")
                   escreval("1 - Manha")
@@ -214,6 +250,12 @@ Inicio
 
                   // NOME DO MEDICO
 
+                  limpatela
+                  
+                  escreval("----------------------------------------")
+                  escreval("           CADASTRO DO MEDICO")
+                  escreval("----------------------------------------")
+
                   escreval(" ")
                   escreva("Nome do especialista: ")
                   leia(nome_medico[id_atual])
@@ -222,6 +264,7 @@ Inicio
 
                   especialidade_medico[id_atual] <- especialidade
                   disp_medico[id_atual] <- disponibilidade
+                  semana[id_atual] <- diasemana
 
                   // ATUALIZAR O CONTADOR DA ESPECIALIDADE
 
@@ -288,6 +331,22 @@ Inicio
                   escreval("===========================")
                   escreval("       FICHA DO MEDICO")
                   escreval("===========================")
+
+                  se (diasemana = 1) entao
+                     escreval("Dia da Semana: Segunda-Feira")
+                  fimse
+                  se (diasemana = 2) entao
+                     escreval("Dia da Semana: Terça-Feira")
+                  fimse
+                  se (diasemana = 3) entao
+                     escreval("Dia da Semana: Quarta-Feira")
+                  fimse
+                  se (diasemana = 4) entao
+                     escreval("Dia da Semana: Quinta-Feira")
+                  fimse
+                  se (diasemana = 5) entao
+                     escreval("Dia da Semana: Sexta-Feira")
+                  fimse
 
                   se (especialidade = 1) entao
                      escreval("Especialidade: ", esp_pediatra)
