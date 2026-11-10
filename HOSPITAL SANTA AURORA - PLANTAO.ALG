@@ -406,8 +406,6 @@ Inicio
 
          fimse
 
-      fimse
-
       caso 2
 
          limpatela
