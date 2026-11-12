@@ -29,6 +29,7 @@ Var
 
    semana: vetor[1..25] de inteiro
    diasemana: inteiro
+   segunda_medicos: vetor [1..25] de inteiro
 
    // VETORES DE QUANTIDADES POR TURNO
    // POSICAO 1 = MANHA
@@ -1259,12 +1260,13 @@ Inicio
 
                fimenquanto
                escolha(diasemana)
-               
+               i = 1
                caso 1
                     escreval("Qual ID você deseja atribuir? )
                     leia(idbusca)
+                    segunda_medicos[i] <- idbusca
                     
-
+                    escreval(segunda_medicos[i])
                fimescolha
       caso 0
 
