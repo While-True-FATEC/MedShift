@@ -4,7 +4,7 @@ Var
     //1254 - caso 4
    // VARIAVEIS DE CONTROLE
 
-   i, turno: inteiro
+   i, turno, j: inteiro
    menu, continuar: inteiro
    especialidade, disponibilidade: inteiro
    id_atual, pode_cadastrar, idbusca: inteiro
@@ -30,6 +30,7 @@ Var
    semana: vetor[1..25] de inteiro
    diasemana: inteiro
    segunda_medicos: vetor [1..25] de inteiro
+   semana_total: vetor [1..25] de inteiro
 
    // VETORES DE QUANTIDADES POR TURNO
    // POSICAO 1 = MANHA
@@ -1260,14 +1261,27 @@ Inicio
 
                fimenquanto
                escolha(diasemana)
-               i = 1
+               i <- 1
+               j <- 1
                caso 1
-                    escreval("Qual ID você deseja atribuir? )
+                    escreval("Qual ID você deseja atribuir para segunda-feira? ")
                     leia(idbusca)
                     segunda_medicos[i] <- idbusca
                     
-                    escreval(segunda_medicos[i])
+                    semana_total[j] <- idbusca
+                    
+                    
+                    escreval("O ID ", segunda_medicos[i], " foi atribuído para segunda-feira com sucesso!")
                fimescolha
+               
+               para j de 1 ate semana_total faca //para percorrer se há repetidos.
+                    se (semana_total[j] = segunda_medicos[i])
+                    i <- i + 1
+                    
+                    se (i > 6) faca
+                       escreval("O médico não pôde ser atribuído para segunda. Motivo: 6 plantões foram ultrapassados.")
+                    fimse
+               fimpara
       caso 0
 
          limpatela
