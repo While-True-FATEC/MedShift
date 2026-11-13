@@ -4,7 +4,7 @@ Var
     //1254 - caso 4
    // VARIAVEIS DE CONTROLE
 
-   i, turno, j: inteiro
+   i, turno, j, k, contagem, total_atribuicoes: inteiro
    menu, continuar: inteiro
    especialidade, disponibilidade: inteiro
    id_atual, pode_cadastrar, idbusca: inteiro
