@@ -142,15 +142,13 @@ Inicio
                escreval("3 - Quarta-Feira")
                escreval("4 - Quinta-Feira")
                escreval("5 - Sexta-Feira")
-               escreval("6 - Sábado")
-               escreval("7 - Domingo")
                escreva("Escolha uma opcao: ")
                leia(diasemana)
 
-               enquanto (diasemana < 1) ou (diasemana > 7) faca
+               enquanto (diasemana < 1) ou (diasemana > 5) faca
 
                   escreval("Dia da Semana invalido!")
-                  escreva("Digite entre 1 e 7: ")
+                  escreva("Digite entre 1 e 5: ")
                   leia(diasemana)
 
                fimenquanto
@@ -336,12 +334,6 @@ Inicio
                   se (diasemana = 5) entao
                      escreval("Dia da Semana: Sexta-Feira")
                   fimse
-                  se (diasemana = 6) entao
-                     escreval("Dia da Semana: Sábado")
-                  fimse
-                  se (diasemana = 7) entao
-                     escreval("Dia da Semana: Domingo")
-                  fimse
 
                   se (especialidade = 1) entao
                      escreval("Especialidade: ", esp_pediatra)
@@ -429,15 +421,13 @@ Inicio
          escreval("3 - Quarta-Feira")
          escreval("4 - Quinta-Feira")
          escreval("5 - Sexta-Feira")
-         escreval("6 - Sábado")
-         escreval("7 - Domingo")
          escreva("Escolha uma opcao: ")
          leia(diasemana)
 
-         enquanto (diasemana < 1) ou (diasemana > 7) faca
+         enquanto (diasemana < 1) ou (diasemana > 5) faca
 
             escreval("Dia da Semana invalido!")
-            escreva("Digite entre 1 e 7: ")
+            escreva("Digite entre 1 e 5: ")
             leia(diasemana)
 
          fimenquanto
@@ -463,12 +453,7 @@ Inicio
          se (diasemana = 5) entao
             escreval("Dia da Semana: Sexta-Feira")
          fimse
-         se (diasemana = 6) entao
-            escreval("Dia da Semana: Sábado")
-         fimse
-         se (diasemana = 7) entao
-            escreval("Dia da Semana: Domingo")
-         fimse
+         
          plantao_valido <- verdadeiro
 
          escreval(" ")
