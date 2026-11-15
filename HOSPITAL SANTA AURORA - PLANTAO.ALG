@@ -1,7 +1,7 @@
 Algoritmo "Hospital Santa Aurora - Plantao"
 
 Var
-    //1254 - caso 4
+   //1254 - caso 4
    // VARIAVEIS DE CONTROLE
 
    i, turno, j, k, contagem, total_atribuicoes: inteiro
@@ -1235,69 +1235,84 @@ Inicio
 
             fimenquanto
          fimse
-         
+
       caso 4
-           limpatela
-           
-           escreval("        ATRIBUIÇÃO PARA SEMANA")
-           escreval("----------------------------------------")
-           
-           escreval("Qual semana você deseja atribuir um médico? ")
-           escreval("1 - Segunda-Feira")
-           escreval("2 - Terça-Feira")
-           escreval("3 - Quarta-Feira")
-           escreval("4 - Quinta-Feira")
-           escreval("5 - Sexta-Feira")
-           escreval("6 - Sábado")
-           escreval("7 - Domingo")
-           escreva("Escolha uma opcao: ")
-           leia(diasemana)
+         limpatela
 
-               enquanto (diasemana < 1) ou (diasemana > 7) faca
+         escreval("        ATRIBUIÇÃO PARA SEMANA")
+         escreval("----------------------------------------")
 
-                  escreval("Dia da Semana invalido!")
-                  escreva("Digite entre 1 e 7: ")
-                  leia(diasemana)
+         escreval("Qual semana você deseja atribuir um médico? ")
+         escreval("1 - Segunda-Feira")
+         escreval("2 - Terça-Feira")
+         escreval("3 - Quarta-Feira")
+         escreval("4 - Quinta-Feira")
+         escreval("5 - Sexta-Feira")
+         escreval("6 - Sábado")
+         escreval("7 - Domingo")
+         escreva("Escolha uma opcao: ")
+         leia(diasemana)
 
-               fimenquanto
-               escolha(diasemana)
+         enquanto (diasemana < 1) ou (diasemana > 7) faca
 
-               k <- 0
-      caso 1
-         escreva("Qual ID deseja atribuir para segunda-feira? ")
-         leia(idbusca)
+            escreval("Dia da Semana invalido!")
+            escreva("Digite entre 1 e 7: ")
+            leia(diasemana)
 
-         contagem <- 0
+         fimenquanto
+         escolha diasemana
 
-         // Verifica quantas vezes o ID aparece no histórico.
-         para j de 1 ate total_atribuicoes faca
-            se (semana_total[j] = idbusca) entao
+            k <- 0
+         caso 1
+            escreva("Qual ID deseja atribuir para segunda-feira? ")
+            leia(idbusca)
+
+            contagem <- 0
+
+            // Verifica quantas vezes o ID aparece no histórico.
+            para j de 1 ate total_atribuicoes faca
+               se (semana_total[j] = idbusca) entao
+                  contagem <- contagem + 1
+               fimse
+            fimpara
+
+            se (contagem >= 6) entao
+
+               escreval("O médico não pôde ser atribuído.")
+               escreval("Motivo: limite de 6 plantões atingido.")
+
+            senao
+
+               // Guarda o médico na segunda-feira.
+               k <- k + 1
+               segunda_medicos[k] <- idbusca
+
+               // Guarda o ID no histórico semanal.
+               total_atribuicoes <- total_atribuicoes + 1 // Global para outros dias.
+               semana_total[total_atribuicoes] <- idbusca
+
+               // Atualiza a contagem
                contagem <- contagem + 1
+
+               escreval("O ID foi atribuído para segunda-feira com sucesso!")
+               escreval("Quantidade de atribuições: ", contagem)
+
             fimse
-         fimpara
 
-         se (contagem >= 6) entao
+         outrocaso
+            escreva("Palmit�o")
+         fimescolha
 
-            escreval("O médico não pôde ser atribuído.")
-            escreval("Motivo: limite de 6 plantões atingido.")
 
-         senao
 
-            // Guarda o médico na segunda-feira.
-            k <- k + 1
-            segunda_medicos[k] <- idbusca
 
-            // Guarda o ID no histórico semanal.
-            total_atribuicoes <- total_atribuicoes + 1 // Global para outros dias.
-            semana_total[total_atribuicoes] <- idbusca
 
-            // Atualiza a contagem
-            contagem <- contagem + 1
 
-            escreval("O ID foi atribuído para segunda-feira com sucesso!")
-            escreval("Quantidade de atribuições: ", contagem)
 
-         fimse
+
+
+
+
       caso 0
 
          limpatela
@@ -1716,10 +1731,9 @@ Inicio
          fimse
 
          escreval("----------------------------------------")
-          fimalgoritmo
-
+         fimalgoritmo
       outrocaso
-      limpatela
+         limpatela
          escreval("Opção Inválida")
       fimescolha
 
