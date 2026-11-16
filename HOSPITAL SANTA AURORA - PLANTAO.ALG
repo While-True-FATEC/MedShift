@@ -105,6 +105,7 @@ Inicio
       escreval("1 - Cadastrar um medico")
       escreval("2 - Consultar semana")
       escreval("3 - Procurar ID")
+      escreval("4 - Atribuir Semana")
       escreval("0 - Finalizar o plantao")
       escreval("----------------------------------------")
       escreva("Escolha uma opcao: ")
@@ -238,7 +239,7 @@ Inicio
                   // NOME DO MEDICO
 
                   limpatela
-                  
+
                   escreval("----------------------------------------")
                   escreval("           CADASTRO DO MEDICO")
                   escreval("----------------------------------------")
@@ -417,11 +418,11 @@ Inicio
          escreval(" ")
          escreval("Qual o dia da semana deseja consultar:")
          escreval("1 - Segunda-Feira")
-         escreval("2 - TerÃ§a-Feira")
+         escreval("2 - Terça-Feira")
          escreval("3 - Quarta-Feira")
          escreval("4 - Quinta-Feira")
          escreval("5 - Sexta-Feira")
-         escreva("Escolha uma opcao: ")
+         escreva("Escolha uma opção: ")
          leia(diasemana)
 
          enquanto (diasemana < 1) ou (diasemana > 5) faca
@@ -453,7 +454,7 @@ Inicio
          se (diasemana = 5) entao
             escreval("Dia da Semana: Sexta-Feira")
          fimse
-         
+
          plantao_valido <- verdadeiro
 
          escreval(" ")
@@ -1235,6 +1236,271 @@ Inicio
             fimenquanto
          fimse
 
+      caso 4
+
+         se (qtd_cad_medicos = 0) entao
+            limpatela
+            escreval("Nenhum medico foi cadastrado!")
+         senao
+
+            limpatela
+            escreval("Aqui estão todos os médicos cadastrados no sistema")
+            escreval(" ")
+
+            escreva("Pediatras: ")
+            para i de 1 ate qtd_cad_medicos faca
+               se especialidade_medico[i] = 1 entao
+                  escreva(i, " ")
+               fimse
+            fimpara
+
+            escreval(" ")
+            escreval(" ")
+
+            escreva("Clinicos Gerais: ")
+            para i de 1 ate qtd_cad_medicos faca
+               se especialidade_medico[i] = 2 entao
+                  escreva(i, " ")
+               fimse
+            fimpara
+
+            escreval(" ")
+            escreval(" ")
+
+            escreva("Cirurgioes: ")
+            para i de 1 ate qtd_cad_medicos faca
+               se especialidade_medico[i] = 3 entao
+                  escreva(i, " ")
+               fimse
+            fimpara
+
+            escreval(" ")
+            escreval(" ")
+
+            escreval("Qual id você deseja atribuir a outro dia: ")
+            leia(idbusca)
+
+            escreval(" ")
+            escreval(" ")
+
+            enquanto (idbusca < 1) ou (idbusca > qtd_cad_medicos) faca
+               escreval("ID invalido!")
+               escreva("Digite outro ID: ")
+               leia(idbusca)
+            fimenquanto
+
+            enquanto nome_medico[idbusca] = "" faca
+               escreval("Medico nao cadastrado!")
+               escreva("Digite outro ID: ")
+               leia(idbusca)
+
+               enquanto (idbusca < 1) ou (idbusca > qtd_cad_medicos) faca
+                  escreval("ID invalido!")
+                  escreva("Digite outro ID: ")
+                  leia(idbusca)
+               fimenquanto
+            fimenquanto
+
+            escolhe <- "S"
+
+            enquanto escolhe = "S" faca
+
+               limpatela
+
+               escreval("===========================")
+               escreval("      FICHA DO MEDICO")
+               escreval("===========================")
+
+               escreval(" ")
+
+               escreval("ID do especialista: ", idbusca)
+
+               escreval(" ")
+
+
+               escreval("Nome: ", nome_medico[idbusca])
+
+               escreval(" ")
+               
+               se especialidade_medico[idbusca] = 1 entao
+                  escreval("Especialidade: ", esp_pediatra)
+               fimse
+
+               se especialidade_medico[idbusca] = 2 entao
+                  escreval("Especialidade: ", esp_clinico_geral)
+               fimse
+
+               se especialidade_medico[idbusca] = 3 entao
+                  escreval("Especialidade: ", esp_cirurgiao)
+               fimse
+
+               escreval(" ")
+
+               escreval("O médico ", nome_medico[idbusca], " está escalado para os seguintes turnos: ")
+
+               escreval(" ")
+
+               se semana[idbusca] = 1 entao
+                  escreva("Segunda-Feira: ")
+
+                  se (disp_medico[idbusca] = 1) entao
+                     escreva("Manhã")
+                  senao
+                     se (disp_medico[idbusca] = 2) entao
+                        escreva("Tarde")
+                     senao
+                        se (disp_medico[idbusca] = 3) entao
+                           escreva("Noite")
+                        senao
+                           se (disp_medico[idbusca] = 4) entao
+                              escreva("Manhã e Tarde")
+                           senao
+                              se (disp_medico[idbusca] = 5) entao
+                                 escreva("Manhã e Noite")
+                              senao
+                                 se (disp_medico[idbusca] = 6) entao
+                                    escreva("Tarde e Noite")
+                                 fimse
+                              fimse
+                           fimse
+                        fimse
+                     fimse
+                  fimse
+               fimse
+
+               se semana[idbusca] = 2 entao
+                  escreva("Terça-Feira")
+
+                  se (disp_medico[idbusca] = 1) entao
+                     escreva("Manhã")
+                  senao
+                     se (disp_medico[idbusca] = 2) entao
+                        escreva("Tarde")
+                     senao
+                        se (disp_medico[idbusca] = 3) entao
+                           escreva("Noite")
+                        senao
+                           se (disp_medico[idbusca] = 4) entao
+                              escreva("Manhã e Tarde")
+                           senao
+                              se (disp_medico[idbusca] = 5) entao
+                                 escreva("Manhã e Noite")
+                              senao
+                                 se (disp_medico[idbusca] = 6) entao
+                                    escreva("Tarde e Noite")
+                                 fimse
+                              fimse
+                           fimse
+                        fimse
+                     fimse
+                  fimse
+               fimse
+               
+               se semana[idbusca] = 3 entao
+                  escreva("Quarta-Feira")
+
+                  se (disp_medico[idbusca] = 1) entao
+                     escreva("Manhã")
+                  senao
+                     se (disp_medico[idbusca] = 2) entao
+                        escreva("Tarde")
+                     senao
+                        se (disp_medico[idbusca] = 3) entao
+                           escreva("Noite")
+                        senao
+                           se (disp_medico[idbusca] = 4) entao
+                              escreva("Manhã e Tarde")
+                           senao
+                              se (disp_medico[idbusca] = 5) entao
+                                 escreva("Manhã e Noite")
+                              senao
+                                 se (disp_medico[idbusca] = 6) entao
+                                    escreva("Tarde e Noite")
+                                 fimse
+                              fimse
+                           fimse
+                        fimse
+                     fimse
+                  fimse
+               fimse
+               
+               se semana[idbusca] = 4 entao
+                  escreva("Quinta-Feira")
+
+                  se (disp_medico[idbusca] = 1) entao
+                     escreva("Manhã")
+                  senao
+                     se (disp_medico[idbusca] = 2) entao
+                        escreva("Tarde")
+                     senao
+                        se (disp_medico[idbusca] = 3) entao
+                           escreva("Noite")
+                        senao
+                           se (disp_medico[idbusca] = 4) entao
+                              escreva("Manhã e Tarde")
+                           senao
+                              se (disp_medico[idbusca] = 5) entao
+                                 escreva("Manhã e Noite")
+                              senao
+                                 se (disp_medico[idbusca] = 6) entao
+                                    escreva("Tarde e Noite")
+                                 fimse
+                              fimse
+                           fimse
+                        fimse
+                     fimse
+                  fimse
+               fimse
+               
+               se semana[idbusca] = 5 entao
+                  escreva("Sexta-Feira")
+
+                  se (disp_medico[idbusca] = 1) entao
+                     escreva("Manhã")
+                  senao
+                     se (disp_medico[idbusca] = 2) entao
+                        escreva("Tarde")
+                     senao
+                        se (disp_medico[idbusca] = 3) entao
+                           escreva("Noite")
+                        senao
+                           se (disp_medico[idbusca] = 4) entao
+                              escreva("Manhã e Tarde")
+                           senao
+                              se (disp_medico[idbusca] = 5) entao
+                                 escreva("Manhã e Noite")
+                              senao
+                                 se (disp_medico[idbusca] = 6) entao
+                                    escreva("Tarde e Noite")
+                                 fimse
+                              fimse
+                           fimse
+                        fimse
+                     fimse
+                  fimse
+               fimse
+
+               escreval(" ")
+
+
+
+               escolhe <- "N"
+
+            fimenquanto
+
+
+
+
+
+
+
+
+
+
+
+
+         fimse
+
       caso 0
 
          limpatela
@@ -1507,7 +1773,7 @@ Inicio
          escreval(" ")
 
          //RELATÃ“RIO DO TURNO DA NOITE
-         
+
          escreval("TURNO DA NOITE")
          escreval(" ")
 
@@ -1653,13 +1919,13 @@ Inicio
          fimse
 
          escreval("----------------------------------------")
-          fimalgoritmo
+fimalgoritmo
 
-      outrocaso
-      limpatela
-         escreval("OpÃ§Ã£o InvÃ¡lida")
-      fimescolha
+outrocaso
+   limpatela
+   escreval("OpÃ§Ã£o InvÃ¡lida")
+fimescolha
 
-   fimenquanto
+fimenquanto
 
 fimalgoritmo
