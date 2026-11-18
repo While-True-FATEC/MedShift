@@ -26,12 +26,12 @@ Var
    nome_medico: vetor[1..25] de caractere
    especialidade_medico: vetor[1..25] de inteiro
    disp_medico: vetor[1..25] de inteiro
-   disp_registro: vetor[1..125] de inteiro
+   disp_registro: vetor[1..50] de inteiro
 
-   id_disponibilidade: vetor[1..125] de inteiro
+   id_disponibilidade: vetor[1..50] de inteiro
    qtd_disp: inteiro
 
-   semana: vetor[1..125] de inteiro
+   semana: vetor[1..50] de inteiro
    diasemana: inteiro
 
    // VETORES DE QUANTIDADES POR TURNO
@@ -87,7 +87,8 @@ Inicio
 
    fimpara
 
-   para i de 1 ate 125 faca
+   para i de 1 ate 50 faca
+
       id_disponibilidade[i] <- 0
       semana[i] <- 0
       disp_registro[i] <- 0
@@ -1292,10 +1293,6 @@ Inicio
             fimenquanto
          fimse
 
-
-
-
-
       caso 4
 
          se (qtd_cad_medicos = 0) entao
@@ -1543,49 +1540,12 @@ Inicio
                            fimse
                         fimse
                      fimse
-
-
-
-
-
-
-
-
-
-
-
                   fimse
-
                fimpara
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+               
                escreval(" ")
 
-               escreval("Em qual outro dia você deseja escalalo: ")
+               escreval("Em qual outro dia você deseja escalá-lo: ")
 
                escreval(" ")
                escreval("1 - Segunda-Feira")
@@ -1739,40 +1699,10 @@ Inicio
                      fimpara
                   fimpara
                fimse
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+               
                escolhe <- "N"
 
             fimenquanto
-
-
-
-
-
-
-
-
-
-
-
-
          fimse
 
       caso 0
