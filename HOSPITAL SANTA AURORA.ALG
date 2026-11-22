@@ -49,6 +49,9 @@ Var
    tem_manha, tem_tarde, tem_noite: logico
    tem_pediatra,tem_clinico,tem_cirurgiao: logico
    opcao_alteracao, especialidade_antiga, disponibilidade_antiga: inteiro
+   qtd_plantao_semana, qtd_plantao_novo: inteiro
+   dia_anterior: inteiro
+   trabalhou_noite_anterior, quer_manha: logico
    especialidades_faltando: caractere
 
 Inicio
@@ -92,6 +95,7 @@ Inicio
       id_disponibilidade[i] <- 0
       semana[i] <- 0
       disp_registro[i] <- 0
+      
    fimpara
 
    qtd_cad_medicos <- 12
@@ -186,7 +190,9 @@ Inicio
    qtd_cirurgioes[2] <- 2
    cadastrado[3] <- 3
 
-   //TERÇA
+
+   //        TERÇA
+
 
    nome_medico[1] <- "JOAO"
    especialidade_medico[1] <- 1
@@ -227,7 +233,6 @@ Inicio
 
    qtd_cirurgioes[1] <- 1
    cadastrado[3] <- 3
-
 
    // NOITE
 
@@ -270,14 +275,10 @@ Inicio
 
    qtd_cirurgioes[2] <- 2
    cadastrado[3] <- 3
-   
-   
-   
-   
-     //QUARTA
-   
-   
-   
+
+
+   //        QUARTA
+
 
    nome_medico[7] <- "ANA"
    especialidade_medico[7] <- 1
@@ -318,9 +319,6 @@ Inicio
 
    qtd_cirurgioes[3] <- 3
    cadastrado[6] <- 6
-
-
-
 
    // NOITE
 
@@ -365,7 +363,8 @@ Inicio
    cadastrado[3] <- 3
 
 
-   //QUINTA
+   //           QUINTA
+
 
    nome_medico[7] <- "ANA"
    especialidade_medico[7] <- 1
@@ -1942,7 +1941,7 @@ Inicio
                   escreval("4 - Manha e Tarde")
                   escreval("5 - Manha e Noite")
                   escreval("6 - Tarde e Noite")
-                  escreva("Escolha uma opï¿½ï¿½o: ")
+                  escreva("Escolha uma opção: ")
                   leia(disponibilidade)
 
                   enquanto (disponibilidade < 1) ou (disponibilidade > 6) faca
@@ -1953,18 +1952,82 @@ Inicio
 
                   fimenquanto
 
-                  qtd_disp <- qtd_disp + 1
-                  id_disponibilidade[qtd_disp] <- idbusca
-                  semana[qtd_disp] <- diasemana
-                  disp_registro[qtd_disp] <- disponibilidade
+                  // VERIFICAR SE TRABALHOU A NOITE NO DIA ANTERIOR
+                  trabalhou_noite_anterior <- falso
+                  quer_manha <- falso
 
-                  // NOME DO MEDICO
+                  se (disponibilidade = 1) ou (disponibilidade = 4) ou (disponibilidade = 5) ou (disponibilidade = 7) entao
+                     quer_manha <- verdadeiro
+                  fimse
 
+                  se diasemana > 1 entao
+                     dia_anterior <- diasemana - 1
+
+                     para i de 1 ate qtd_disp faca
+                        se (id_disponibilidade[i] = idbusca) e (semana[i] = dia_anterior) entao
+                           se (disp_registro[i] = 3) ou (disp_registro[i] = 5) ou (disp_registro[i] = 6) ou (disp_registro[i] = 7) entao
+                              trabalhou_noite_anterior <- verdadeiro
+                           fimse
+                        fimse
+                     fimpara
+                  fimse
+
+                  se trabalhou_noite_anterior e quer_manha entao
                   limpatela
+                     escreval("ERRO: Este medico trabalhou no turno da noite no dia anterior.")
+                     escreval("Ele nao pode ser escalado para trabalhar de manha no dia seguinte.")
+                     pode_cadastrar <- 0
+                  fimse
 
-                  escreval("Mï¿½dico atribuï¿½do com sucesso!")
+                  // CONTAR OS PLANTOES JA ATRIBUIDOS AO MEDICO NA SEMANA
+                  qtd_plantao_semana <- 0
 
-                  // REUNIR OS TURNOS DE TODAS AS DISPONIBILIDADES DO MEDICO
+                  para i de 1 ate qtd_disp faca
+                     se (id_disponibilidade[i] = idbusca) e (semana[i] >= 1) e (semana[i] <= 5) entao
+                        se (disp_registro[i] = 1) ou (disp_registro[i] = 2) ou (disp_registro[i] = 3) entao
+                           qtd_plantao_semana <- qtd_plantao_semana + 1
+                        senao
+                           se (disp_registro[i] = 4) ou (disp_registro[i] = 5) ou (disp_registro[i] = 6) entao
+                              qtd_plantao_semana <- qtd_plantao_semana + 2
+                           senao
+                              se disp_registro[i] = 7 entao
+                                 qtd_plantao_semana <- qtd_plantao_semana + 3
+                              fimse
+                           fimse
+                        fimse
+                     fimse
+                  fimpara
+
+                  // CONTAR QUANTOS PLANTOES A NOVA DISPONIBILIDADE REPRESENTA
+                  se (disponibilidade = 1) ou (disponibilidade = 2) ou (disponibilidade = 3) entao
+                     qtd_plantao_novo <- 1
+                  senao
+                     se (disponibilidade = 4) ou (disponibilidade = 5) ou (disponibilidade = 6) entao
+                        qtd_plantao_novo <- 2
+                     senao
+                        qtd_plantao_novo <- 3
+                     fimse
+                  fimse
+
+                  se (qtd_plantao_semana + qtd_plantao_novo) > 5 entao
+                     escreval("ERRO: O medico ultrapassaria o limite de 5 plantoes na semana.")
+                     escreval("Plantoes ja cadastrados: ", qtd_plantao_semana)
+                     escreval("Plantoes desta nova disponibilidade: ", qtd_plantao_novo)
+                     pode_cadastrar <- 0
+                  fimse
+
+                  // SO CADASTRAR SE AS DUAS REGRAS FOREM RESPEITADAS
+                  se pode_cadastrar = 1 entao
+
+                     qtd_disp <- qtd_disp + 1
+                     id_disponibilidade[qtd_disp] <- idbusca
+                     semana[qtd_disp] <- diasemana
+                     disp_registro[qtd_disp] <- disponibilidade
+
+                     limpatela
+                     escreval("Medico atribuido com sucesso!")
+
+                     // REUNIR OS TURNOS DE TODAS AS DISPONIBILIDADES DO MEDICO
                   tem_manha <- falso
                   tem_tarde <- falso
                   tem_noite <- falso
@@ -2047,6 +2110,7 @@ Inicio
                         fimse
                      fimpara
                   fimpara
+                  fimse
                fimse
 
                escolhe <- "N"
