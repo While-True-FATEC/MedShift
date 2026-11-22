@@ -120,6 +120,7 @@ Inicio
       escreval("2 - Consultar semana")
       escreval("3 - Procurar ID")
       escreval("4 - Atribuir Semana")
+      escreval("5 - Resetar escala")
       escreval("0 - Finalizar o plantao")
       escreval("----------------------------------------")
       escreva("Escolha uma opcao: ")
@@ -153,11 +154,11 @@ Inicio
                escreval(" ")
                escreval("Qual o dia da semana deseja cadastrar esse mÃ©dico:")
                escreval("1 - Segunda-Feira")
-               escreval("2 - Terça-Feira")
+               escreval("2 - Terï¿½a-Feira")
                escreval("3 - Quarta-Feira")
                escreval("4 - Quinta-Feira")
                escreval("5 - Sexta-Feira")
-               escreva("Escolha uma opção: ")
+               escreva("Escolha uma opï¿½ï¿½o: ")
                leia(diasemana)
 
                enquanto (diasemana < 1) ou (diasemana > 5) faca
@@ -437,11 +438,11 @@ Inicio
          escreval(" ")
          escreval("Qual o dia da semana deseja consultar:")
          escreval("1 - Segunda-Feira")
-         escreval("2 - Terça-Feira")
+         escreval("2 - Terï¿½a-Feira")
          escreval("3 - Quarta-Feira")
          escreval("4 - Quinta-Feira")
          escreval("5 - Sexta-Feira")
-         escreva("Escolha uma opção: ")
+         escreva("Escolha uma opï¿½ï¿½o: ")
          leia(diasemana)
 
          enquanto (diasemana < 1) ou (diasemana > 5) faca
@@ -1301,7 +1302,7 @@ Inicio
          senao
 
             limpatela
-            escreval("Aqui estão todos os médicos cadastrados no sistema")
+            escreval("Aqui estï¿½o todos os mï¿½dicos cadastrados no sistema")
             escreval(" ")
 
             escreva("Pediatras: ")
@@ -1334,7 +1335,7 @@ Inicio
             escreval(" ")
             escreval(" ")
 
-            escreval("Qual id você deseja atribuir a outro dia: ")
+            escreval("Qual id vocï¿½ deseja atribuir a outro dia: ")
             leia(idbusca)
 
             escreval(" ")
@@ -1394,7 +1395,7 @@ Inicio
                escreval(" ")
 
 
-               escreval("O médico ", nome_medico[idbusca], " está escalado para os seguintes turnos:")
+               escreval("O mï¿½dico ", nome_medico[idbusca], " estï¿½ escalado para os seguintes turnos:")
                escreval(" ")
 
                para i de 1 ate qtd_disp faca
@@ -1405,7 +1406,7 @@ Inicio
                         escreva("Segunda-Feira: ")
 
                         se (disp_registro[i] = 1) entao
-                           escreval("Manhã")
+                           escreval("Manhï¿½")
                         senao
                            se (disp_registro[i] = 2) entao
                               escreval("Tarde")
@@ -1414,10 +1415,10 @@ Inicio
                                  escreval("Noite")
                               senao
                                  se (disp_registro[i] = 4) entao
-                                    escreval("Manhã e Tarde")
+                                    escreval("Manhï¿½ e Tarde")
                                  senao
                                     se (disp_registro[i] = 5) entao
-                                       escreval("Manhã e Noite")
+                                       escreval("Manhï¿½ e Noite")
                                     senao
                                        se (disp_registro[i] = 6) entao
                                           escreval("Tarde e Noite")
@@ -1430,10 +1431,10 @@ Inicio
                      fimse
 
                      se semana[i] = 2 entao
-                        escreva("Terça-Feira: ")
+                        escreva("Terï¿½a-Feira: ")
 
                         se (disp_registro[i] = 1) entao
-                           escreval("Manhã")
+                           escreval("Manhï¿½")
                         senao
                            se (disp_registro[i] = 2) entao
                               escreval("Tarde")
@@ -1442,10 +1443,10 @@ Inicio
                                  escreval("Noite")
                               senao
                                  se (disp_registro[i] = 4) entao
-                                    escreval("Manhã e Tarde")
+                                    escreval("Manhï¿½ e Tarde")
                                  senao
                                     se (disp_registro[i] = 5) entao
-                                       escreval("Manhã e Noite")
+                                       escreval("Manhï¿½ e Noite")
                                     senao
                                        se (disp_registro[i] = 6) entao
                                           escreval("Tarde e Noite")
@@ -1461,7 +1462,7 @@ Inicio
                         escreva("Quarta-Feira: ")
 
                         se (disp_registro[i] = 1) entao
-                           escreval("Manhã")
+                           escreval("Manhï¿½")
                         senao
                            se (disp_registro[i] = 2) entao
                               escreval("Tarde")
@@ -1470,10 +1471,10 @@ Inicio
                                  escreval("Noite")
                               senao
                                  se (disp_registro[i] = 4) entao
-                                    escreval("Manhã e Tarde")
+                                    escreval("Manhï¿½ e Tarde")
                                  senao
                                     se (disp_registro[i] = 5) entao
-                                       escreval("Manhã e Noite")
+                                       escreval("Manhï¿½ e Noite")
                                     senao
                                        se (disp_registro[i] = 6) entao
                                           escreval("Tarde e Noite")
@@ -1489,7 +1490,7 @@ Inicio
                         escreva("Quinta-Feira: ")
 
                         se (disp_registro[i] = 1) entao
-                           escreval("Manhã")
+                           escreval("Manhï¿½")
                         senao
                            se (disp_registro[i] = 2) entao
                               escreval("Tarde")
@@ -1498,10 +1499,10 @@ Inicio
                                  escreval("Noite")
                               senao
                                  se (disp_registro[i] = 4) entao
-                                    escreval("Manhã e Tarde")
+                                    escreval("Manhï¿½ e Tarde")
                                  senao
                                     se (disp_registro[i] = 5) entao
-                                       escreval("Manhã e Noite")
+                                       escreval("Manhï¿½ e Noite")
                                     senao
                                        se (disp_registro[i] = 6) entao
                                           escreval("Tarde e Noite")
@@ -1517,7 +1518,7 @@ Inicio
                         escreva("Sexta-Feira: ")
 
                         se (disp_registro[i] = 1) entao
-                           escreval("Manhã")
+                           escreval("Manhï¿½")
                         senao
                            se (disp_registro[i] = 2) entao
                               escreval("Tarde")
@@ -1526,10 +1527,10 @@ Inicio
                                  escreval("Noite")
                               senao
                                  se (disp_registro[i] = 4) entao
-                                    escreval("Manhã e Tarde")
+                                    escreval("Manhï¿½ e Tarde")
                                  senao
                                     se (disp_registro[i] = 5) entao
-                                       escreval("Manhã e Noite")
+                                       escreval("Manhï¿½ e Noite")
                                     senao
                                        se (disp_registro[i] = 6) entao
                                           escreval("Tarde e Noite")
@@ -1545,11 +1546,11 @@ Inicio
 
                escreval(" ")
 
-               escreval("Em qual outro dia você deseja escalá-lo: ")
+               escreval("Em qual outro dia vocï¿½ deseja escalï¿½-lo: ")
 
                escreval(" ")
                escreval("1 - Segunda-Feira")
-               escreval("2 - Terça-Feira")
+               escreval("2 - Terï¿½a-Feira")
                escreval("3 - Quarta-Feira")
                escreval("4 - Quinta-Feira")
                escreval("5 - Sexta-Feira")
@@ -1584,7 +1585,7 @@ Inicio
                   escreval("4 - Manha e Tarde")
                   escreval("5 - Manha e Noite")
                   escreval("6 - Tarde e Noite")
-                  escreva("Escolha uma opcao: ")
+                  escreva("Escolha uma opï¿½ï¿½o: ")
                   leia(disponibilidade)
 
                   enquanto (disponibilidade < 1) ou (disponibilidade > 6) faca
@@ -1603,10 +1604,8 @@ Inicio
                   // NOME DO MEDICO
 
                   limpatela
-
-                  escreval("----------------------------------------")
-                  escreval("           CADASTRO DO MEDICO")
-                  escreval("----------------------------------------")
+                  
+                  escreval("Mï¿½dico atribuï¿½do com sucesso!")
 
                   // REUNIR OS TURNOS DE TODAS AS DISPONIBILIDADES DO MEDICO
                   tem_manha <- falso
@@ -1705,12 +1704,56 @@ Inicio
             fimenquanto
          fimse
 
+      caso 5
+
+       limpatela
+
+       escreval("----------------------------------------")
+       escreval("             RESETAR ESCALA")
+       escreval("----------------------------------------")
+
+       se qtd_disp = 0 entao
+          escreval("Nao ha registros de escala para apagar.")
+       senao
+
+       // APAGAR OS REGISTROS DE DISPONIBILIDADE DA SEMANA
+       para i de 1 ate 50 faca
+          id_disponibilidade[i] <- 0
+          semana[i] <- 0
+          disp_registro[i] <- 0
+       fimpara
+
+       // LIMPAR A DISPONIBILIDADE GERAL DOS MEDICOS,
+       // PRESERVANDO SEUS CADASTROS E ESPECIALIDADES
+       para i de 1 ate qtd_cad_medicos faca
+          disp_medico[i] <- 0
+       fimpara
+
+       // ZERAR OS CONTADORES AUXILIARES DOS TURNOS
+       para turno de 1 ate 3 faca
+          qtd_pediatras[turno] <- 0
+          qtd_clinicos[turno] <- 0
+          qtd_cirurgioes[turno] <- 0
+          cadastrado[turno] <- 0
+       fimpara
+
+       qtd_disp <- 0
+
+       escreval("A escala da semana foi apagada com sucesso!")
+       escreval("Os medicos cadastrados foram preservados.")
+
+       fimse
+
+       escreval(" ")
+       escreval("Retornando ao menu principal...")
+
+
       caso 0
 
          limpatela
 
          escreval("----------------------------------------")
-         escreval("           RELATÓRIO FINAL DA SEMANA")
+         escreval("           RELATï¿½RIO FINAL DA SEMANA")
          escreval("----------------------------------------")
 
          diasemana <- 1
@@ -1724,12 +1767,12 @@ Inicio
 
 
             escreval(" ")
-            escreval("  TURNO DA MANHÃ")
+            escreval("  TURNO DA MANHï¿½")
             escreval(" ")
 
             Se qtd_cad_pediatra = 0 entao
                plantao_valido <- falso
-               escreval("     Nenhum Pediatra cadastrado/disponivel no turno da manhÃ£!")
+               escreval("     Nenhum Pediatra cadastrado/disponivel no turno da manhï¿½!")
             senao
                tem_pediatra <- falso
 
@@ -1743,7 +1786,7 @@ Inicio
 
                se tem_pediatra = falso entao
                   plantao_valido <- falso
-                  escreval("     Nenhum Pediatra disponivel no turno da manha!")
+                  escreval("     Nenhum Pediatra disponivel no turno da manhï¿½!")
                senao
                   para i de 1 ate qtd_disp faca
                      se (especialidade_medico[id_disponibilidade[i]] = 1) e (semana[i] = diasemana) entao
@@ -1752,13 +1795,13 @@ Inicio
 
 
                            Se (disp_registro[i] = 1) Entao
-                              Escreval(" | Turno: Manha")
+                              Escreval(" | Turno: Manhï¿½")
                            Senao
                               Se (disp_registro[i] = 4) Entao
-                                 Escreval(" | Turno: Manha e Tarde")
+                                 Escreval(" | Turno: Manhï¿½ e Tarde")
                               Senao
                                  Se (disp_registro[i] = 5) Entao
-                                    Escreval(" | Turno: Manha e Noite")
+                                    Escreval(" | Turno: Manhï¿½ e Noite")
                                  fimse
                               fimse
                            FimSe
@@ -1773,7 +1816,7 @@ Inicio
 
             Se qtd_cad_clinico = 0 entao
                plantao_valido <- falso
-               escreval("     Nenhum ClÃ­nico Geral cadastrado/disponivel no turno da manhÃ£!")
+               escreval("     Nenhum ClÃ­nico Geral cadastrado/disponivel no turno da manhï¿½!")
             senao
                tem_clinico <- falso
 
@@ -1787,7 +1830,7 @@ Inicio
 
                se tem_clinico = falso entao
                   plantao_valido <- falso
-                  escreval("     Nenhum Clinico Geral disponivel no turno da manha!")
+                  escreval("     Nenhum Clinico Geral disponivel no turno da manhï¿½!")
                senao
                   para i de 1 ate qtd_disp faca
                      se (especialidade_medico[id_disponibilidade[i]] = 2) e (semana[i] = diasemana) entao
@@ -1795,13 +1838,13 @@ Inicio
                            escreva("     ", esp_clinico_geral, " | ID: ", id_disponibilidade[i], " | NOME: ", nome_medico[id_disponibilidade[i]])
 
                            Se (disp_registro[i] = 1) Entao
-                              Escreval(" | Turno: Manha")
+                              Escreval(" | Turno: Manhï¿½")
                            Senao
                               Se (disp_registro[i] = 4) Entao
-                                 Escreval(" | Turno: Manha e Tarde")
+                                 Escreval(" | Turno: Manhï¿½ e Tarde")
                               Senao
                                  Se (disp_registro[i] = 5) Entao
-                                    Escreval(" | Turno: Manha e Noite")
+                                    Escreval(" | Turno: Manhï¿½ e Noite")
                                  fimse
                               fimse
                            FimSe
@@ -1815,7 +1858,7 @@ Inicio
 
             Se qtd_cad_cirurgiao = 0 entao
                plantao_valido <- falso
-               escreval("     Nenhum CirurgiÃ£o cadastrado/disponivel no turno da manhÃ£!")
+               escreval("     Nenhum Cirurgiï¿½o cadastrado/disponivel no turno da manhï¿½!")
             senao
                tem_cirurgiao <- falso
 
@@ -1829,7 +1872,7 @@ Inicio
 
                se tem_cirurgiao = falso entao
                   plantao_valido <- falso
-                  escreval("     Nenhum CirurgiÃ£o disponivel no turno da manha!")
+                  escreval("     Nenhum Cirurgiï¿½o disponivel no turno da manhï¿½!")
                senao
                   para i de 1 ate qtd_disp faca
                      se (especialidade_medico[id_disponibilidade[i]] = 3) e (semana[i] = diasemana) entao
@@ -1837,13 +1880,13 @@ Inicio
                            escreva("     ", esp_cirurgiao, " | ID: ", id_disponibilidade[i], " | NOME: ", nome_medico[id_disponibilidade[i]])
 
                            Se (disp_registro[i] = 1) Entao
-                              Escreval(" | Turno: Manha")
+                              Escreval(" | Turno: Manhï¿½")
                            Senao
                               Se (disp_registro[i] = 4) Entao
-                                 Escreval(" | Turno: Manha e Tarde")
+                                 Escreval(" | Turno: Manhï¿½ e Tarde")
                               Senao
                                  Se (disp_registro[i] = 5) Entao
-                                    Escreval(" | Turno: Manha e Noite")
+                                    Escreval(" | Turno: Manhï¿½ e Noite")
                                  fimse
                               fimse
                            FimSe
@@ -1904,7 +1947,7 @@ Inicio
 
             Se qtd_cad_clinico = 0 entao
                plantao_valido <- falso
-               escreval("     Nenhum Clínico Geral cadastrado/disponivel no turno da tarde!")
+               escreval("     Nenhum Clï¿½nico Geral cadastrado/disponivel no turno da tarde!")
             senao
                tem_clinico <- falso
 
@@ -1946,7 +1989,7 @@ Inicio
 
             Se qtd_cad_cirurgiao = 0 entao
                plantao_valido <- falso
-               escreval("     Nenhum Cirurgião cadastrado/disponivel no turno da tarde!")
+               escreval("     Nenhum Cirurgiï¿½o cadastrado/disponivel no turno da tarde!")
             senao
                tem_cirurgiao <- falso
 
@@ -1960,7 +2003,7 @@ Inicio
 
                se tem_cirurgiao = falso entao
                   plantao_valido <- falso
-                  escreval("     Nenhum Cirurgião disponivel no turno da tarde!")
+                  escreval("     Nenhum Cirurgiï¿½o disponivel no turno da tarde!")
                senao
                   para i de 1 ate qtd_disp faca
                      se (especialidade_medico[id_disponibilidade[i]] = 3) e (semana[i] = diasemana) entao
@@ -2035,7 +2078,7 @@ Inicio
 
             Se qtd_cad_clinico = 0 entao
                plantao_valido <- falso
-               escreval("     Nenhum Clínico Geral cadastrado/disponivel no turno da noite!")
+               escreval("     Nenhum Clï¿½nico Geral cadastrado/disponivel no turno da noite!")
             senao
                tem_clinico <- falso
 
@@ -2077,7 +2120,7 @@ Inicio
 
             Se qtd_cad_cirurgiao = 0 entao
                plantao_valido <- falso
-               escreval("     Nenhum Cirurgião cadastrado/disponivel no turno da noite!")
+               escreval("     Nenhum Cirurgiï¿½o cadastrado/disponivel no turno da noite!")
             senao
                tem_cirurgiao <- falso
 
@@ -2091,7 +2134,7 @@ Inicio
 
                se tem_cirurgiao = falso entao
                   plantao_valido <- falso
-                  escreval("     Nenhum Cirurgião disponivel no turno da noite!")
+                  escreval("     Nenhum Cirurgiï¿½o disponivel no turno da noite!")
                senao
                   para i de 1 ate qtd_disp faca
                      se (especialidade_medico[id_disponibilidade[i]] = 3) e (semana[i] = diasemana) entao
@@ -2102,7 +2145,7 @@ Inicio
                               Escreval(" | Turno: Noite")
                            Senao
                               Se (disp_registro[i] = 5) Entao
-                                 Escreval(" | Turno: Manha e Noite")
+                                 Escreval(" | Turno: Manhï¿½ e Noite")
                               Senao
                                  Se (disp_registro[i] = 6) Entao
                                     Escreval(" | Turno: Tarde e Noite")
@@ -2125,16 +2168,16 @@ Inicio
             escreval(" ")
             escreval(" ")
             escreval("                         -----------")
-            escreval("                         TERÇA-FEIRA")
+            escreval("                         TERï¿½A-FEIRA")
             escreval("                         -----------")
 
             escreval(" ")
-            escreval("  TURNO DA MANHÃ")
+            escreval("  TURNO DA MANHï¿½")
             escreval(" ")
 
             Se qtd_cad_pediatra = 0 entao
                plantao_valido <- falso
-               escreval("     Nenhum Pediatra cadastrado/disponivel no turno da manhã!")
+               escreval("     Nenhum Pediatra cadastrado/disponivel no turno da manhï¿½!")
             senao
                tem_pediatra <- falso
 
@@ -2148,7 +2191,7 @@ Inicio
 
                se tem_pediatra = falso entao
                   plantao_valido <- falso
-                  escreval("     Nenhum Pediatra disponível no turno da manhã!")
+                  escreval("     Nenhum Pediatra disponï¿½vel no turno da manhï¿½!")
                senao
                   para i de 1 ate qtd_disp faca
                      se (especialidade_medico[id_disponibilidade[i]] = 1) e (semana[i] = diasemana) entao
@@ -2157,13 +2200,13 @@ Inicio
 
 
                            Se (disp_registro[i] = 1) Entao
-                              Escreval(" | Turno: Manha")
+                              Escreval(" | Turno: Manhï¿½")
                            Senao
                               Se (disp_registro[i] = 4) Entao
-                                 Escreval(" | Turno: Manha e Tarde")
+                                 Escreval(" | Turno: Manhï¿½ e Tarde")
                               Senao
                                  Se (disp_registro[i] = 5) Entao
-                                    Escreval(" | Turno: Manha e Noite")
+                                    Escreval(" | Turno: Manhï¿½ e Noite")
                                  fimse
                               fimse
                            FimSe
@@ -2178,7 +2221,7 @@ Inicio
 
             Se qtd_cad_clinico = 0 entao
                plantao_valido <- falso
-               escreval("     Nenhum ClÃ­nico Geral cadastrado/disponivel no turno da manhã!")
+               escreval("     Nenhum Clï¿½nico Geral cadastrado/disponivel no turno da manhï¿½!")
             senao
                tem_clinico <- falso
 
@@ -2192,7 +2235,7 @@ Inicio
 
                se tem_clinico = falso entao
                   plantao_valido <- falso
-                  escreval("     Nenhum Clinico Geral disponivel no turno da manha!")
+                  escreval("     Nenhum Clï¿½nico Geral disponivel no turno da manhï¿½!")
                senao
                   para i de 1 ate qtd_disp faca
                      se (especialidade_medico[id_disponibilidade[i]] = 2) e (semana[i] = diasemana) entao
@@ -2200,13 +2243,13 @@ Inicio
                            escreva("         ", esp_clinico_geral, " | ID: ", id_disponibilidade[i], " | NOME: ", nome_medico[id_disponibilidade[i]])
 
                            Se (disp_registro[i] = 1) Entao
-                              Escreval(" | Turno: Manha")
+                              Escreval(" | Turno: Manhï¿½")
                            Senao
                               Se (disp_registro[i] = 4) Entao
-                                 Escreval(" | Turno: Manha e Tarde")
+                                 Escreval(" | Turno: Manhï¿½ e Tarde")
                               Senao
                                  Se (disp_registro[i] = 5) Entao
-                                    Escreval(" | Turno: Manha e Noite")
+                                    Escreval(" | Turno: Manhï¿½ e Noite")
                                  fimse
                               fimse
                            FimSe
@@ -2220,7 +2263,7 @@ Inicio
 
             Se qtd_cad_cirurgiao = 0 entao
                plantao_valido <- falso
-               escreval("     Nenhum CirurgiÃ£o cadastrado/disponivel no turno da manhÃ£!")
+               escreval("     Nenhum Cirurgiï¿½o cadastrado/disponivel no turno da manhï¿½!")
             senao
                tem_cirurgiao <- falso
 
@@ -2234,7 +2277,7 @@ Inicio
 
                se tem_cirurgiao = falso entao
                   plantao_valido <- falso
-                  escreval("     Nenhum CirurgiÃ£o disponivel no turno da manha!")
+                  escreval("     Nenhum Cirurgiï¿½o disponivel no turno da manhï¿½!")
                senao
                   para i de 1 ate qtd_disp faca
                      se (especialidade_medico[id_disponibilidade[i]] = 3) e (semana[i] = diasemana) entao
@@ -2242,13 +2285,13 @@ Inicio
                            escreva("     ", esp_cirurgiao, " | ID: ", id_disponibilidade[i], " | NOME: ", nome_medico[id_disponibilidade[i]])
 
                            Se (disp_registro[i] = 1) Entao
-                              Escreval(" | Turno: Manha")
+                              Escreval(" | Turno: Manhï¿½")
                            Senao
                               Se (disp_registro[i] = 4) Entao
-                                 Escreval(" | Turno: Manha e Tarde")
+                                 Escreval(" | Turno: Manhï¿½ e Tarde")
                               Senao
                                  Se (disp_registro[i] = 5) Entao
-                                    Escreval(" | Turno: Manha e Noite")
+                                    Escreval(" | Turno: Manhï¿½ e Noite")
                                  fimse
                               fimse
                            FimSe
@@ -2309,7 +2352,7 @@ Inicio
 
             Se qtd_cad_clinico = 0 entao
                plantao_valido <- falso
-               escreval("     Nenhum Clínico Geral cadastrado/disponivel no turno da tarde!")
+               escreval("     Nenhum Clï¿½nico Geral cadastrado/disponivel no turno da tarde!")
             senao
                tem_clinico <- falso
 
@@ -2351,7 +2394,7 @@ Inicio
 
             Se qtd_cad_cirurgiao = 0 entao
                plantao_valido <- falso
-               escreval("     Nenhum Cirurgião cadastrado/disponivel no turno da tarde!")
+               escreval("     Nenhum Cirurgiï¿½o cadastrado/disponivel no turno da tarde!")
             senao
                tem_cirurgiao <- falso
 
@@ -2365,7 +2408,7 @@ Inicio
 
                se tem_cirurgiao = falso entao
                   plantao_valido <- falso
-                  escreval("     Nenhum Cirurgião disponivel no turno da tarde!")
+                  escreval("     Nenhum Cirurgiï¿½o disponivel no turno da tarde!")
                senao
                   para i de 1 ate qtd_disp faca
                      se (especialidade_medico[id_disponibilidade[i]] = 3) e (semana[i] = diasemana) entao
@@ -2440,7 +2483,7 @@ Inicio
 
             Se qtd_cad_clinico = 0 entao
                plantao_valido <- falso
-               escreval("     Nenhum Clínico Geral cadastrado/disponivel no turno da noite!")
+               escreval("     Nenhum Clï¿½nico Geral cadastrado/disponivel no turno da noite!")
             senao
                tem_clinico <- falso
 
@@ -2482,7 +2525,7 @@ Inicio
 
             Se qtd_cad_cirurgiao = 0 entao
                plantao_valido <- falso
-               escreval("     Nenhum Cirurgião cadastrado/disponivel no turno da noite!")
+               escreval("     Nenhum Cirurgiï¿½o cadastrado/disponivel no turno da noite!")
             senao
                tem_cirurgiao <- falso
 
@@ -2496,7 +2539,7 @@ Inicio
 
                se tem_cirurgiao = falso entao
                   plantao_valido <- falso
-                  escreval("     Nenhum Cirurgião disponivel no turno da noite!")
+                  escreval("     Nenhum Cirurgiï¿½o disponivel no turno da noite!")
                senao
                   para i de 1 ate qtd_disp faca
                      se (especialidade_medico[id_disponibilidade[i]] = 3) e (semana[i] = diasemana) entao
@@ -2534,12 +2577,12 @@ Inicio
             escreval("                         ------------")
 
             escreval(" ")
-            escreval("  TURNO DA MANHÃ")
+            escreval("  TURNO DA MANHï¿½")
             escreval(" ")
 
             Se qtd_cad_pediatra = 0 entao
                plantao_valido <- falso
-               escreval("     Nenhum Pediatra cadastrado/disponivel no turno da manhÃ£!")
+               escreval("     Nenhum Pediatra cadastrado/disponivel no turno da manhï¿½!")
             senao
                tem_pediatra <- falso
 
@@ -2553,7 +2596,7 @@ Inicio
 
                se tem_pediatra = falso entao
                   plantao_valido <- falso
-                  escreval("     Nenhum Pediatra disponivel no turno da manha!")
+                  escreval("     Nenhum Pediatra disponï¿½vel no turno da manhï¿½!")
                senao
                   para i de 1 ate qtd_disp faca
                      se (especialidade_medico[id_disponibilidade[i]] = 1) e (semana[i] = diasemana) entao
@@ -2562,13 +2605,13 @@ Inicio
 
 
                            Se (disp_registro[i] = 1) Entao
-                              Escreval(" | Turno: Manha")
+                              Escreval(" | Turno: Manhï¿½")
                            Senao
                               Se (disp_registro[i] = 4) Entao
-                                 Escreval(" | Turno: Manha e Tarde")
+                                 Escreval(" | Turno: Manhï¿½ e Tarde")
                               Senao
                                  Se (disp_registro[i] = 5) Entao
-                                    Escreval(" | Turno: Manha e Noite")
+                                    Escreval(" | Turno: Manhï¿½ e Noite")
                                  fimse
                               fimse
                            FimSe
@@ -2583,7 +2626,7 @@ Inicio
 
             Se qtd_cad_clinico = 0 entao
                plantao_valido <- falso
-               escreval("     Nenhum ClÃ­nico Geral cadastrado/disponivel no turno da manhÃ£!")
+               escreval("     Nenhum Clï¿½nico Geral cadastrado/disponivel no turno da manhï¿½!")
             senao
                tem_clinico <- falso
 
@@ -2597,21 +2640,21 @@ Inicio
 
                se tem_clinico = falso entao
                   plantao_valido <- falso
-                  escreval("     Nenhum Clinico Geral disponivel no turno da manha!")
+                  escreval("     Nenhum Clï¿½nico Geral disponivel no turno da manhï¿½!")
                senao
                   para i de 1 ate qtd_disp faca
                      se (especialidade_medico[id_disponibilidade[i]] = 2) e (semana[i] = diasemana) entao
                         se (disp_registro[i] = 1) ou (disp_registro[i] = 4) ou (disp_registro[i] = 5) entao
-                           escreva("     ", esp_clinico_geral, " | ID: ", id_disponibilidade[i], " | NOME: ", nome_medico[id_disponibilidade[i]])
+                           escreva("         ", esp_clinico_geral, " | ID: ", id_disponibilidade[i], " | NOME: ", nome_medico[id_disponibilidade[i]])
 
                            Se (disp_registro[i] = 1) Entao
-                              Escreval(" | Turno: Manha")
+                              Escreval(" | Turno: Manhï¿½")
                            Senao
                               Se (disp_registro[i] = 4) Entao
-                                 Escreval(" | Turno: Manha e Tarde")
+                                 Escreval(" | Turno: Manhï¿½ e Tarde")
                               Senao
                                  Se (disp_registro[i] = 5) Entao
-                                    Escreval(" | Turno: Manha e Noite")
+                                    Escreval(" | Turno: Manhï¿½ e Noite")
                                  fimse
                               fimse
                            FimSe
@@ -2625,7 +2668,7 @@ Inicio
 
             Se qtd_cad_cirurgiao = 0 entao
                plantao_valido <- falso
-               escreval("     Nenhum CirurgiÃ£o cadastrado/disponivel no turno da manhÃ£!")
+               escreval("     Nenhum Cirurgiï¿½o cadastrado/disponivel no turno da manhï¿½!")
             senao
                tem_cirurgiao <- falso
 
@@ -2639,7 +2682,7 @@ Inicio
 
                se tem_cirurgiao = falso entao
                   plantao_valido <- falso
-                  escreval("     Nenhum CirurgiÃ£o disponivel no turno da manha!")
+                  escreval("     Nenhum Cirurgiï¿½o disponivel no turno da manhï¿½!")
                senao
                   para i de 1 ate qtd_disp faca
                      se (especialidade_medico[id_disponibilidade[i]] = 3) e (semana[i] = diasemana) entao
@@ -2647,13 +2690,13 @@ Inicio
                            escreva("     ", esp_cirurgiao, " | ID: ", id_disponibilidade[i], " | NOME: ", nome_medico[id_disponibilidade[i]])
 
                            Se (disp_registro[i] = 1) Entao
-                              Escreval(" | Turno: Manha")
+                              Escreval(" | Turno: Manhï¿½")
                            Senao
                               Se (disp_registro[i] = 4) Entao
-                                 Escreval(" | Turno: Manha e Tarde")
+                                 Escreval(" | Turno: Manhï¿½ e Tarde")
                               Senao
                                  Se (disp_registro[i] = 5) Entao
-                                    Escreval(" | Turno: Manha e Noite")
+                                    Escreval(" | Turno: Manhï¿½ e Noite")
                                  fimse
                               fimse
                            FimSe
@@ -2714,7 +2757,7 @@ Inicio
 
             Se qtd_cad_clinico = 0 entao
                plantao_valido <- falso
-               escreval("     Nenhum Clínico Geral cadastrado/disponivel no turno da tarde!")
+               escreval("     Nenhum Clï¿½nico Geral cadastrado/disponivel no turno da tarde!")
             senao
                tem_clinico <- falso
 
@@ -2756,7 +2799,7 @@ Inicio
 
             Se qtd_cad_cirurgiao = 0 entao
                plantao_valido <- falso
-               escreval("     Nenhum Cirurgião cadastrado/disponivel no turno da tarde!")
+               escreval("     Nenhum Cirurgiï¿½o cadastrado/disponivel no turno da tarde!")
             senao
                tem_cirurgiao <- falso
 
@@ -2770,7 +2813,7 @@ Inicio
 
                se tem_cirurgiao = falso entao
                   plantao_valido <- falso
-                  escreval("     Nenhum Cirurgião disponivel no turno da tarde!")
+                  escreval("     Nenhum Cirurgiï¿½o disponivel no turno da tarde!")
                senao
                   para i de 1 ate qtd_disp faca
                      se (especialidade_medico[id_disponibilidade[i]] = 3) e (semana[i] = diasemana) entao
@@ -2845,7 +2888,7 @@ Inicio
 
             Se qtd_cad_clinico = 0 entao
                plantao_valido <- falso
-               escreval("     Nenhum Clínico Geral cadastrado/disponivel no turno da noite!")
+               escreval("     Nenhum Clï¿½nico Geral cadastrado/disponivel no turno da noite!")
             senao
                tem_clinico <- falso
 
@@ -2887,7 +2930,7 @@ Inicio
 
             Se qtd_cad_cirurgiao = 0 entao
                plantao_valido <- falso
-               escreval("     Nenhum Cirurgião cadastrado/disponivel no turno da noite!")
+               escreval("     Nenhum Cirurgiï¿½o cadastrado/disponivel no turno da noite!")
             senao
                tem_cirurgiao <- falso
 
@@ -2901,7 +2944,7 @@ Inicio
 
                se tem_cirurgiao = falso entao
                   plantao_valido <- falso
-                  escreval("     Nenhum Cirurgião disponivel no turno da noite!")
+                  escreval("     Nenhum Cirurgiï¿½o disponivel no turno da noite!")
                senao
                   para i de 1 ate qtd_disp faca
                      se (especialidade_medico[id_disponibilidade[i]] = 3) e (semana[i] = diasemana) entao
@@ -2939,12 +2982,12 @@ Inicio
             escreval(" ")
 
             escreval(" ")
-            escreval("  TURNO DA MANHÃ")
+            escreval("  TURNO DA MANHï¿½")
             escreval(" ")
 
             Se qtd_cad_pediatra = 0 entao
                plantao_valido <- falso
-               escreval("     Nenhum Pediatra cadastrado/disponivel no turno da manhÃ£!")
+               escreval("     Nenhum Pediatra cadastrado/disponivel no turno da manhï¿½!")
             senao
                tem_pediatra <- falso
 
@@ -2958,7 +3001,7 @@ Inicio
 
                se tem_pediatra = falso entao
                   plantao_valido <- falso
-                  escreval("     Nenhum Pediatra disponivel no turno da manha!")
+                  escreval("     Nenhum Pediatra disponï¿½vel no turno da manhï¿½!")
                senao
                   para i de 1 ate qtd_disp faca
                      se (especialidade_medico[id_disponibilidade[i]] = 1) e (semana[i] = diasemana) entao
@@ -2967,13 +3010,13 @@ Inicio
 
 
                            Se (disp_registro[i] = 1) Entao
-                              Escreval(" | Turno: Manha")
+                              Escreval(" | Turno: Manhï¿½")
                            Senao
                               Se (disp_registro[i] = 4) Entao
-                                 Escreval(" | Turno: Manha e Tarde")
+                                 Escreval(" | Turno: Manhï¿½ e Tarde")
                               Senao
                                  Se (disp_registro[i] = 5) Entao
-                                    Escreval(" | Turno: Manha e Noite")
+                                    Escreval(" | Turno: Manhï¿½ e Noite")
                                  fimse
                               fimse
                            FimSe
@@ -2988,7 +3031,7 @@ Inicio
 
             Se qtd_cad_clinico = 0 entao
                plantao_valido <- falso
-               escreval("     Nenhum ClÃ­nico Geral cadastrado/disponivel no turno da manhÃ£!")
+               escreval("     Nenhum Clï¿½nico Geral cadastrado/disponivel no turno da manhï¿½!")
             senao
                tem_clinico <- falso
 
@@ -3002,21 +3045,21 @@ Inicio
 
                se tem_clinico = falso entao
                   plantao_valido <- falso
-                  escreval("     Nenhum Clinico Geral disponivel no turno da manha!")
+                  escreval("     Nenhum Clï¿½nico Geral disponivel no turno da manhï¿½!")
                senao
                   para i de 1 ate qtd_disp faca
                      se (especialidade_medico[id_disponibilidade[i]] = 2) e (semana[i] = diasemana) entao
                         se (disp_registro[i] = 1) ou (disp_registro[i] = 4) ou (disp_registro[i] = 5) entao
-                           escreva("     ", esp_clinico_geral, " | ID: ", id_disponibilidade[i], " | NOME: ", nome_medico[id_disponibilidade[i]])
+                           escreva("         ", esp_clinico_geral, " | ID: ", id_disponibilidade[i], " | NOME: ", nome_medico[id_disponibilidade[i]])
 
                            Se (disp_registro[i] = 1) Entao
-                              Escreval(" | Turno: Manha")
+                              Escreval(" | Turno: Manhï¿½")
                            Senao
                               Se (disp_registro[i] = 4) Entao
-                                 Escreval(" | Turno: Manha e Tarde")
+                                 Escreval(" | Turno: Manhï¿½ e Tarde")
                               Senao
                                  Se (disp_registro[i] = 5) Entao
-                                    Escreval(" | Turno: Manha e Noite")
+                                    Escreval(" | Turno: Manhï¿½ e Noite")
                                  fimse
                               fimse
                            FimSe
@@ -3030,7 +3073,7 @@ Inicio
 
             Se qtd_cad_cirurgiao = 0 entao
                plantao_valido <- falso
-               escreval("     Nenhum CirurgiÃ£o cadastrado/disponivel no turno da manhÃ£!")
+               escreval("     Nenhum Cirurgiï¿½o cadastrado/disponivel no turno da manhï¿½!")
             senao
                tem_cirurgiao <- falso
 
@@ -3044,7 +3087,7 @@ Inicio
 
                se tem_cirurgiao = falso entao
                   plantao_valido <- falso
-                  escreval("     Nenhum CirurgiÃ£o disponivel no turno da manha!")
+                  escreval("     Nenhum Cirurgiï¿½o disponivel no turno da manhï¿½!")
                senao
                   para i de 1 ate qtd_disp faca
                      se (especialidade_medico[id_disponibilidade[i]] = 3) e (semana[i] = diasemana) entao
@@ -3052,13 +3095,13 @@ Inicio
                            escreva("     ", esp_cirurgiao, " | ID: ", id_disponibilidade[i], " | NOME: ", nome_medico[id_disponibilidade[i]])
 
                            Se (disp_registro[i] = 1) Entao
-                              Escreval(" | Turno: Manha")
+                              Escreval(" | Turno: Manhï¿½")
                            Senao
                               Se (disp_registro[i] = 4) Entao
-                                 Escreval(" | Turno: Manha e Tarde")
+                                 Escreval(" | Turno: Manhï¿½ e Tarde")
                               Senao
                                  Se (disp_registro[i] = 5) Entao
-                                    Escreval(" | Turno: Manha e Noite")
+                                    Escreval(" | Turno: Manhï¿½ e Noite")
                                  fimse
                               fimse
                            FimSe
@@ -3119,7 +3162,7 @@ Inicio
 
             Se qtd_cad_clinico = 0 entao
                plantao_valido <- falso
-               escreval("     Nenhum Clínico Geral cadastrado/disponivel no turno da tarde!")
+               escreval("     Nenhum Clï¿½nico Geral cadastrado/disponivel no turno da tarde!")
             senao
                tem_clinico <- falso
 
@@ -3161,7 +3204,7 @@ Inicio
 
             Se qtd_cad_cirurgiao = 0 entao
                plantao_valido <- falso
-               escreval("     Nenhum Cirurgião cadastrado/disponivel no turno da tarde!")
+               escreval("     Nenhum Cirurgiï¿½o cadastrado/disponivel no turno da tarde!")
             senao
                tem_cirurgiao <- falso
 
@@ -3175,7 +3218,7 @@ Inicio
 
                se tem_cirurgiao = falso entao
                   plantao_valido <- falso
-                  escreval("     Nenhum Cirurgião disponivel no turno da tarde!")
+                  escreval("     Nenhum Cirurgiï¿½o disponivel no turno da tarde!")
                senao
                   para i de 1 ate qtd_disp faca
                      se (especialidade_medico[id_disponibilidade[i]] = 3) e (semana[i] = diasemana) entao
@@ -3250,7 +3293,7 @@ Inicio
 
             Se qtd_cad_clinico = 0 entao
                plantao_valido <- falso
-               escreval("     Nenhum Clínico Geral cadastrado/disponivel no turno da noite!")
+               escreval("     Nenhum Clï¿½nico Geral cadastrado/disponivel no turno da noite!")
             senao
                tem_clinico <- falso
 
@@ -3292,7 +3335,7 @@ Inicio
 
             Se qtd_cad_cirurgiao = 0 entao
                plantao_valido <- falso
-               escreval("     Nenhum Cirurgião cadastrado/disponivel no turno da noite!")
+               escreval("     Nenhum Cirurgiï¿½o cadastrado/disponivel no turno da noite!")
             senao
                tem_cirurgiao <- falso
 
@@ -3306,7 +3349,7 @@ Inicio
 
                se tem_cirurgiao = falso entao
                   plantao_valido <- falso
-                  escreval("     Nenhum Cirurgião disponivel no turno da noite!")
+                  escreval("     Nenhum Cirurgiï¿½o disponivel no turno da noite!")
                senao
                   para i de 1 ate qtd_disp faca
                      se (especialidade_medico[id_disponibilidade[i]] = 3) e (semana[i] = diasemana) entao
@@ -3344,12 +3387,12 @@ Inicio
             escreval("                         -----------")
 
             escreval(" ")
-            escreval("  TURNO DA MANHÃ")
+            escreval("  TURNO DA MANHï¿½")
             escreval(" ")
 
             Se qtd_cad_pediatra = 0 entao
                plantao_valido <- falso
-               escreval("     Nenhum Pediatra cadastrado/disponivel no turno da manhÃ£!")
+               escreval("     Nenhum Pediatra cadastrado/disponivel no turno da manhï¿½!")
             senao
                tem_pediatra <- falso
 
@@ -3363,7 +3406,7 @@ Inicio
 
                se tem_pediatra = falso entao
                   plantao_valido <- falso
-                  escreval("     Nenhum Pediatra disponivel no turno da manha!")
+                  escreval("     Nenhum Pediatra disponï¿½vel no turno da manhï¿½!")
                senao
                   para i de 1 ate qtd_disp faca
                      se (especialidade_medico[id_disponibilidade[i]] = 1) e (semana[i] = diasemana) entao
@@ -3372,13 +3415,13 @@ Inicio
 
 
                            Se (disp_registro[i] = 1) Entao
-                              Escreval(" | Turno: Manha")
+                              Escreval(" | Turno: Manhï¿½")
                            Senao
                               Se (disp_registro[i] = 4) Entao
-                                 Escreval(" | Turno: Manha e Tarde")
+                                 Escreval(" | Turno: Manhï¿½ e Tarde")
                               Senao
                                  Se (disp_registro[i] = 5) Entao
-                                    Escreval(" | Turno: Manha e Noite")
+                                    Escreval(" | Turno: Manhï¿½ e Noite")
                                  fimse
                               fimse
                            FimSe
@@ -3393,7 +3436,7 @@ Inicio
 
             Se qtd_cad_clinico = 0 entao
                plantao_valido <- falso
-               escreval("     Nenhum Clínico Geral cadastrado/disponivel no turno da manhÃ£!")
+               escreval("     Nenhum Clï¿½nico Geral cadastrado/disponivel no turno da manhï¿½!")
             senao
                tem_clinico <- falso
 
@@ -3407,21 +3450,21 @@ Inicio
 
                se tem_clinico = falso entao
                   plantao_valido <- falso
-                  escreval("     Nenhum Clinico Geral disponivel no turno da manha!")
+                  escreval("     Nenhum Clï¿½nico Geral disponivel no turno da manhï¿½!")
                senao
                   para i de 1 ate qtd_disp faca
                      se (especialidade_medico[id_disponibilidade[i]] = 2) e (semana[i] = diasemana) entao
                         se (disp_registro[i] = 1) ou (disp_registro[i] = 4) ou (disp_registro[i] = 5) entao
-                           escreva("     ", esp_clinico_geral, " | ID: ", id_disponibilidade[i], " | NOME: ", nome_medico[id_disponibilidade[i]])
+                           escreva("         ", esp_clinico_geral, " | ID: ", id_disponibilidade[i], " | NOME: ", nome_medico[id_disponibilidade[i]])
 
                            Se (disp_registro[i] = 1) Entao
-                              Escreval(" | Turno: Manha")
+                              Escreval(" | Turno: Manhï¿½")
                            Senao
                               Se (disp_registro[i] = 4) Entao
-                                 Escreval(" | Turno: Manha e Tarde")
+                                 Escreval(" | Turno: Manhï¿½ e Tarde")
                               Senao
                                  Se (disp_registro[i] = 5) Entao
-                                    Escreval(" | Turno: Manha e Noite")
+                                    Escreval(" | Turno: Manhï¿½ e Noite")
                                  fimse
                               fimse
                            FimSe
@@ -3435,7 +3478,7 @@ Inicio
 
             Se qtd_cad_cirurgiao = 0 entao
                plantao_valido <- falso
-               escreval("     Nenhum CirurgiÃ£o cadastrado/disponivel no turno da manhÃ£!")
+               escreval("     Nenhum Cirurgiï¿½o cadastrado/disponivel no turno da manhï¿½!")
             senao
                tem_cirurgiao <- falso
 
@@ -3449,7 +3492,7 @@ Inicio
 
                se tem_cirurgiao = falso entao
                   plantao_valido <- falso
-                  escreval("     Nenhum CirurgiÃ£o disponivel no turno da manha!")
+                  escreval("     Nenhum Cirurgiï¿½o disponivel no turno da manhï¿½!")
                senao
                   para i de 1 ate qtd_disp faca
                      se (especialidade_medico[id_disponibilidade[i]] = 3) e (semana[i] = diasemana) entao
@@ -3457,13 +3500,13 @@ Inicio
                            escreva("     ", esp_cirurgiao, " | ID: ", id_disponibilidade[i], " | NOME: ", nome_medico[id_disponibilidade[i]])
 
                            Se (disp_registro[i] = 1) Entao
-                              Escreval(" | Turno: Manha")
+                              Escreval(" | Turno: Manhï¿½")
                            Senao
                               Se (disp_registro[i] = 4) Entao
-                                 Escreval(" | Turno: Manha e Tarde")
+                                 Escreval(" | Turno: Manhï¿½ e Tarde")
                               Senao
                                  Se (disp_registro[i] = 5) Entao
-                                    Escreval(" | Turno: Manha e Noite")
+                                    Escreval(" | Turno: Manhï¿½ e Noite")
                                  fimse
                               fimse
                            FimSe
@@ -3524,7 +3567,7 @@ Inicio
 
             Se qtd_cad_clinico = 0 entao
                plantao_valido <- falso
-               escreval("     Nenhum Clínico Geral cadastrado/disponivel no turno da tarde!")
+               escreval("     Nenhum Clï¿½nico Geral cadastrado/disponivel no turno da tarde!")
             senao
                tem_clinico <- falso
 
@@ -3566,7 +3609,7 @@ Inicio
 
             Se qtd_cad_cirurgiao = 0 entao
                plantao_valido <- falso
-               escreval("     Nenhum Cirurgião cadastrado/disponivel no turno da tarde!")
+               escreval("     Nenhum Cirurgiï¿½o cadastrado/disponivel no turno da tarde!")
             senao
                tem_cirurgiao <- falso
 
@@ -3580,7 +3623,7 @@ Inicio
 
                se tem_cirurgiao = falso entao
                   plantao_valido <- falso
-                  escreval("     Nenhum Cirurgião disponivel no turno da tarde!")
+                  escreval("     Nenhum Cirurgiï¿½o disponivel no turno da tarde!")
                senao
                   para i de 1 ate qtd_disp faca
                      se (especialidade_medico[id_disponibilidade[i]] = 3) e (semana[i] = diasemana) entao
@@ -3655,7 +3698,7 @@ Inicio
 
             Se qtd_cad_clinico = 0 entao
                plantao_valido <- falso
-               escreval("     Nenhum Clínico Geral cadastrado/disponivel no turno da noite!")
+               escreval("     Nenhum Clï¿½nico Geral cadastrado/disponivel no turno da noite!")
             senao
                tem_clinico <- falso
 
@@ -3697,7 +3740,7 @@ Inicio
 
             Se qtd_cad_cirurgiao = 0 entao
                plantao_valido <- falso
-               escreval("     Nenhum Cirurgião cadastrado/disponivel no turno da noite!")
+               escreval("     Nenhum Cirurgiï¿½o cadastrado/disponivel no turno da noite!")
             senao
                tem_cirurgiao <- falso
 
@@ -3711,7 +3754,7 @@ Inicio
 
                se tem_cirurgiao = falso entao
                   plantao_valido <- falso
-                  escreval("     Nenhum Cirurgião disponivel no turno da noite!")
+                  escreval("     Nenhum Cirurgiï¿½o disponivel no turno da noite!")
                senao
                   para i de 1 ate qtd_disp faca
                      se (especialidade_medico[id_disponibilidade[i]] = 3) e (semana[i] = diasemana) entao
@@ -3760,7 +3803,7 @@ fimalgoritmo
 
 outrocaso
    limpatela
-   escreval("Opção inválida!")
+   escreval("Opï¿½ï¿½o invï¿½lida!")
 fimescolha
 
 fimenquanto
