@@ -23,9 +23,9 @@ Var
    // DADOS DOS MEDICOS
    // O INDICE DO VETOR REPRESENTA O ID DO MEDICO
 
-   nome_medico: vetor[1..25] de caractere
-   especialidade_medico: vetor[1..25] de inteiro
-   disp_medico: vetor[1..25] de inteiro
+   nome_medico: vetor[1..50] de caractere
+   especialidade_medico: vetor[1..50] de inteiro
+   disp_medico: vetor[1..50] de inteiro
    disp_registro: vetor[1..50] de inteiro
 
    id_disponibilidade: vetor[1..50] de inteiro
@@ -39,11 +39,11 @@ Var
    // POSICAO 2 = TARDE
    // POSICAO 3 = NOITE
 
-   qtd_pediatras: vetor[1..3] de inteiro
-   qtd_clinicos: vetor[1..3] de inteiro
-   qtd_cirurgioes: vetor[1..3] de inteiro
+   qtd_pediatras: vetor[1..10] de inteiro
+   qtd_clinicos: vetor[1..10] de inteiro
+   qtd_cirurgioes: vetor[1..10] de inteiro
 
-   cadastrado: vetor[1..3] de inteiro
+   cadastrado: vetor[1..10] de inteiro
 
    trabalha_turno, plantao_valido: logico
    tem_manha, tem_tarde, tem_noite: logico
@@ -69,7 +69,7 @@ Inicio
 
    // INICIALIZACAO DOS VETORES
 
-   para i de 1 ate 3 faca
+   para i de 1 ate 10 faca
 
       qtd_pediatras[i] <- 0
       qtd_clinicos[i] <- 0
@@ -79,7 +79,7 @@ Inicio
 
    fimpara
 
-   para i de 1 ate 25 faca
+   para i de 25 ate 50 faca
 
       nome_medico[i] <- ""
       especialidade_medico[i] <- 0
@@ -87,12 +87,369 @@ Inicio
 
    fimpara
 
-   para i de 1 ate 50 faca
+   para i de 25 ate 50 faca
 
       id_disponibilidade[i] <- 0
       semana[i] <- 0
       disp_registro[i] <- 0
    fimpara
+
+   qtd_cad_medicos <- 12
+
+   qtd_cad_pediatra <- 4
+   qtd_cad_clinico <- 4
+   qtd_cad_cirurgiao <-  4
+
+
+   // Inicialização dos médicos
+
+   nome_medico[1] <- "JOAO"
+   especialidade_medico[1] <- 1
+   disp_medico[1] <- 4
+
+   qtd_disp <- 1
+   id_disponibilidade[1] <- 1
+   semana[1] <- 1
+   disp_registro[1] <- 4
+
+   qtd_pediatras[1] <- 1
+   cadastrado[1] <- 1
+
+   //Clinicos
+
+   nome_medico[2] <- "ENZO"
+   especialidade_medico[2] <- 2
+   disp_medico[2] <- 4
+
+   qtd_disp <- 2
+   id_disponibilidade[2] <- 2
+   semana[2] <- 1
+   disp_registro[2] <- 4
+
+   qtd_clinicos[1] <- 1
+   cadastrado[2] <- 2
+
+   // Cirurgiões
+
+   nome_medico[3] <- "NINA"
+   especialidade_medico[3] <- 3
+   disp_medico[3] <- 4
+
+   qtd_disp <- 3
+   id_disponibilidade[3] <- 3
+   semana[3] <- 1
+   disp_registro[3] <- 4
+
+   qtd_cirurgioes[1] <- 1
+   cadastrado[3] <- 3
+
+
+   // NOITE
+
+   nome_medico[4] <- "LARA"
+   especialidade_medico[4] <- 1
+   disp_medico[4] <- 3
+
+   qtd_disp <- 4
+   id_disponibilidade[4] <- 4
+   semana[4] <- 1
+   disp_registro[4] <- 3
+
+   qtd_pediatras[2] <- 2
+   cadastrado[1] <- 1
+
+   //Clinicos
+
+   nome_medico[5] <- "CAIO"
+   especialidade_medico[5] <- 2
+   disp_medico[5] <- 3
+
+   qtd_disp <- 5
+   id_disponibilidade[5] <- 5
+   semana[5] <- 1
+   disp_registro[5] <- 3
+
+   qtd_clinicos[2] <- 2
+   cadastrado[2] <- 2
+
+   // Cirurgiões
+
+   nome_medico[6] <- "LUCA"
+   especialidade_medico[6] <- 3
+   disp_medico[6] <- 3
+
+   qtd_disp <- 6
+   id_disponibilidade[6] <- 6
+   semana[6] <- 1
+   disp_registro[6] <- 3
+
+   qtd_cirurgioes[2] <- 2
+   cadastrado[3] <- 3
+
+   //TERÇA
+
+   nome_medico[1] <- "JOAO"
+   especialidade_medico[1] <- 1
+   disp_medico[1] <- 4
+
+   qtd_disp <- 7
+   id_disponibilidade[7] <- 1
+   semana[7] <- 2
+   disp_registro[7] <- 4
+
+   qtd_pediatras[1] <- 1
+   cadastrado[1] <- 1
+
+   //Clinicos
+
+   nome_medico[2] <- "ENZO"
+   especialidade_medico[2] <- 2
+   disp_medico[2] <- 4
+
+   qtd_disp <- 8
+   id_disponibilidade[8] <- 2
+   semana[8] <- 2
+   disp_registro[8] <- 4
+
+   qtd_clinicos[1] <- 1
+   cadastrado[2] <- 2
+
+   // Cirurgiões
+
+   nome_medico[3] <- "NINA"
+   especialidade_medico[3] <- 3
+   disp_medico[3] <- 4
+
+   qtd_disp <- 9
+   id_disponibilidade[9] <- 3
+   semana[9] <- 2
+   disp_registro[9] <- 4
+
+   qtd_cirurgioes[1] <- 1
+   cadastrado[3] <- 3
+
+
+   // NOITE
+
+   nome_medico[4] <- "LARA"
+   especialidade_medico[4] <- 1
+   disp_medico[4] <- 3
+
+   qtd_disp <- 10
+   id_disponibilidade[10] <- 4
+   semana[10] <- 2
+   disp_registro[10] <- 3
+
+   qtd_pediatras[2] <- 2
+   cadastrado[1] <- 1
+
+   //Clinicos
+
+   nome_medico[5] <- "CAIO"
+   especialidade_medico[5] <- 2
+   disp_medico[5] <- 3
+
+   qtd_disp <- 11
+   id_disponibilidade[11] <- 5
+   semana[11] <- 2
+   disp_registro[11] <- 3
+
+   qtd_clinicos[2] <- 2
+   cadastrado[2] <- 2
+
+   // Cirurgiões
+
+   nome_medico[6] <- "LUCA"
+   especialidade_medico[6] <- 3
+   disp_medico[6] <- 3
+
+   qtd_disp <- 12
+   id_disponibilidade[12] <- 6
+   semana[12] <- 2
+   disp_registro[12] <- 3
+
+   qtd_cirurgioes[2] <- 2
+   cadastrado[3] <- 3
+   
+   
+   
+   
+     //QUARTA
+   
+   
+   
+
+   nome_medico[7] <- "ANA"
+   especialidade_medico[7] <- 1
+   disp_medico[7] <- 4
+
+   qtd_disp <- 13
+   id_disponibilidade[13] <- 7
+   semana[13] <- 3
+   disp_registro[13] <- 4
+
+   qtd_pediatras[3] <- 3
+   cadastrado[4] <- 4
+
+   //Clinicos
+
+   nome_medico[8] <- "EVA"
+   especialidade_medico[8] <- 2
+   disp_medico[8] <- 4
+
+   qtd_disp <- 14
+   id_disponibilidade[14] <- 8
+   semana[14] <- 3
+   disp_registro[14] <- 4
+
+   qtd_clinicos[3] <- 3
+   cadastrado[5] <- 5
+
+   // Cirurgiões
+
+   nome_medico[9] <- "IAN"
+   especialidade_medico[9] <- 3
+   disp_medico[9] <- 4
+
+   qtd_disp <- 15
+   id_disponibilidade[15] <- 9
+   semana[15] <- 3
+   disp_registro[15] <- 4
+
+   qtd_cirurgioes[3] <- 3
+   cadastrado[6] <- 6
+
+
+
+
+   // NOITE
+
+   nome_medico[10] <- "LEO"
+   especialidade_medico[10] <- 1
+   disp_medico[10] <- 3
+
+   qtd_disp <- 16
+   id_disponibilidade[16] <- 10
+   semana[16] <- 3
+   disp_registro[16] <- 3
+
+   qtd_pediatras[1] <- 1
+   cadastrado[1] <- 1
+
+   //Clinicos
+
+   nome_medico[11] <- "GIL"
+   especialidade_medico[11] <- 2
+   disp_medico[11] <- 3
+
+   qtd_disp <- 17
+   id_disponibilidade[17] <- 11
+   semana[17] <- 3
+   disp_registro[17] <- 3
+
+   qtd_clinicos[2] <- 2
+   cadastrado[2] <- 2
+
+   // Cirurgiões
+
+   nome_medico[12] <- "RUI"
+   especialidade_medico[12] <- 3
+   disp_medico[12] <- 3
+
+   qtd_disp <- 18
+   id_disponibilidade[18] <- 12
+   semana[18] <- 3
+   disp_registro[18] <- 3
+
+   qtd_cirurgioes[3] <- 3
+   cadastrado[3] <- 3
+
+
+   //QUINTA
+
+   nome_medico[7] <- "ANA"
+   especialidade_medico[7] <- 1
+   disp_medico[7] <- 4
+
+   qtd_disp <- 19
+   id_disponibilidade[19] <- 7
+   semana[19] <- 4
+   disp_registro[19] <- 4
+
+   qtd_pediatras[1] <- 1
+   cadastrado[1] <- 1
+
+   //Clinicos
+
+   nome_medico[8] <- "EVA"
+   especialidade_medico[8] <- 2
+   disp_medico[8] <- 4
+
+   qtd_disp <- 20
+   id_disponibilidade[20] <- 8
+   semana[20] <- 4
+   disp_registro[20] <- 4
+
+   qtd_clinicos[2] <- 2
+   cadastrado[2] <- 2
+
+   // Cirurgiões
+
+   nome_medico[9] <- "IAN"
+   especialidade_medico[9] <- 3
+   disp_medico[9] <- 4
+
+   qtd_disp <- 21
+   id_disponibilidade[21] <- 9
+   semana[21] <- 4
+   disp_registro[21] <- 4
+
+   qtd_cirurgioes[3] <- 3
+   cadastrado[3] <- 3
+
+
+   // NOITE
+
+   nome_medico[10] <- "LEO"
+   especialidade_medico[10] <- 1
+   disp_medico[10] <- 3
+
+   qtd_disp <- 22
+   id_disponibilidade[22] <- 10
+   semana[22] <- 4
+   disp_registro[22] <- 3
+
+   qtd_pediatras[4] <- 4
+   cadastrado[1] <- 1
+
+   //Clinicos
+
+   nome_medico[11] <- "GIL"
+   especialidade_medico[11] <- 2
+   disp_medico[11] <- 3
+
+   qtd_disp <- 23
+   id_disponibilidade[23] <- 11
+   semana[23] <- 4
+   disp_registro[23] <- 3
+
+   qtd_clinicos[2] <- 2
+   cadastrado[2] <- 2
+
+   // Cirurgiões
+
+   nome_medico[12] <- "RUI"
+   especialidade_medico[12] <- 3
+   disp_medico[12] <- 3
+
+   qtd_disp <- 24
+   id_disponibilidade[24] <- 12
+   semana[24] <- 4
+   disp_registro[24] <- 3
+
+   qtd_cirurgioes[3] <- 3
+   cadastrado[3] <- 3
+
 
    // APRESENTACAO DO SISTEMA
 
@@ -1604,7 +1961,7 @@ Inicio
                   // NOME DO MEDICO
 
                   limpatela
-                  
+
                   escreval("Mï¿½dico atribuï¿½do com sucesso!")
 
                   // REUNIR OS TURNOS DE TODAS AS DISPONIBILIDADES DO MEDICO
@@ -1626,28 +1983,24 @@ Inicio
                      fimse
                   fimpara
 
-                  // CODIGO 7 REPRESENTA OS TRES TURNOS
-                  se tem_manha e tem_tarde e tem_noite entao
-                     disp_medico[idbusca] <- 7
+
+                  se tem_manha e tem_tarde entao
+                     disp_medico[idbusca] <- 4
                   senao
-                     se tem_manha e tem_tarde entao
-                        disp_medico[idbusca] <- 4
+                     se tem_manha e tem_noite entao
+                        disp_medico[idbusca] <- 5
                      senao
-                        se tem_manha e tem_noite entao
-                           disp_medico[idbusca] <- 5
+                        se tem_tarde e tem_noite entao
+                           disp_medico[idbusca] <- 6
                         senao
-                           se tem_tarde e tem_noite entao
-                              disp_medico[idbusca] <- 6
+                           se tem_manha entao
+                              disp_medico[idbusca] <- 1
                            senao
-                              se tem_manha entao
-                                 disp_medico[idbusca] <- 1
+                              se tem_tarde entao
+                                 disp_medico[idbusca] <- 2
                               senao
-                                 se tem_tarde entao
-                                    disp_medico[idbusca] <- 2
-                                 senao
-                                    se tem_noite entao
-                                       disp_medico[idbusca] <- 3
-                                    fimse
+                                 se tem_noite entao
+                                    disp_medico[idbusca] <- 3
                                  fimse
                               fimse
                            fimse
@@ -1680,9 +2033,6 @@ Inicio
                         se (disp_medico[i] = 6) e (turno >= 2) entao
                            trabalha_turno <- verdadeiro
                         fimse
-                        se disp_medico[i] = 7 entao
-                           trabalha_turno <- verdadeiro
-                        fimse
                         se trabalha_turno entao
                            se especialidade_medico[i] = 1 entao
                               qtd_pediatras[turno] <- qtd_pediatras[turno] + 1
@@ -1706,46 +2056,46 @@ Inicio
 
       caso 5
 
-       limpatela
+         limpatela
 
-       escreval("----------------------------------------")
-       escreval("             RESETAR ESCALA")
-       escreval("----------------------------------------")
+         escreval("----------------------------------------")
+         escreval("             RESETAR ESCALA")
+         escreval("----------------------------------------")
 
-       se qtd_disp = 0 entao
-          escreval("Nao ha registros de escala para apagar.")
-       senao
+         se qtd_disp = 0 entao
+            escreval("Nao ha registros de escala para apagar.")
+         senao
 
-       // APAGAR OS REGISTROS DE DISPONIBILIDADE DA SEMANA
-       para i de 1 ate 50 faca
-          id_disponibilidade[i] <- 0
-          semana[i] <- 0
-          disp_registro[i] <- 0
-       fimpara
+            // APAGAR OS REGISTROS DE DISPONIBILIDADE DA SEMANA
+            para i de 1 ate 50 faca
+               id_disponibilidade[i] <- 0
+               semana[i] <- 0
+               disp_registro[i] <- 0
+            fimpara
 
-       // LIMPAR A DISPONIBILIDADE GERAL DOS MEDICOS,
-       // PRESERVANDO SEUS CADASTROS E ESPECIALIDADES
-       para i de 1 ate qtd_cad_medicos faca
-          disp_medico[i] <- 0
-       fimpara
+            // LIMPAR A DISPONIBILIDADE GERAL DOS MEDICOS,
+            // PRESERVANDO SEUS CADASTROS E ESPECIALIDADES
+            para i de 1 ate qtd_cad_medicos faca
+               disp_medico[i] <- 0
+            fimpara
 
-       // ZERAR OS CONTADORES AUXILIARES DOS TURNOS
-       para turno de 1 ate 3 faca
-          qtd_pediatras[turno] <- 0
-          qtd_clinicos[turno] <- 0
-          qtd_cirurgioes[turno] <- 0
-          cadastrado[turno] <- 0
-       fimpara
+            // ZERAR OS CONTADORES AUXILIARES DOS TURNOS
+            para turno de 1 ate 3 faca
+               qtd_pediatras[turno] <- 0
+               qtd_clinicos[turno] <- 0
+               qtd_cirurgioes[turno] <- 0
+               cadastrado[turno] <- 0
+            fimpara
 
-       qtd_disp <- 0
+            qtd_disp <- 0
 
-       escreval("A escala da semana foi apagada com sucesso!")
-       escreval("Os medicos cadastrados foram preservados.")
+            escreval("A escala da semana foi apagada com sucesso!")
+            escreval("Os medicos cadastrados foram preservados.")
 
-       fimse
+         fimse
 
-       escreval(" ")
-       escreval("Retornando ao menu principal...")
+         escreval(" ")
+         escreval("Retornando ao menu principal...")
 
 
       caso 0
@@ -2240,7 +2590,7 @@ Inicio
                   para i de 1 ate qtd_disp faca
                      se (especialidade_medico[id_disponibilidade[i]] = 2) e (semana[i] = diasemana) entao
                         se (disp_registro[i] = 1) ou (disp_registro[i] = 4) ou (disp_registro[i] = 5) entao
-                           escreva("         ", esp_clinico_geral, " | ID: ", id_disponibilidade[i], " | NOME: ", nome_medico[id_disponibilidade[i]])
+                           escreva("     ", esp_clinico_geral, " | ID: ", id_disponibilidade[i], " | NOME: ", nome_medico[id_disponibilidade[i]])
 
                            Se (disp_registro[i] = 1) Entao
                               Escreval(" | Turno: Manhï¿½")
@@ -2645,7 +2995,7 @@ Inicio
                   para i de 1 ate qtd_disp faca
                      se (especialidade_medico[id_disponibilidade[i]] = 2) e (semana[i] = diasemana) entao
                         se (disp_registro[i] = 1) ou (disp_registro[i] = 4) ou (disp_registro[i] = 5) entao
-                           escreva("         ", esp_clinico_geral, " | ID: ", id_disponibilidade[i], " | NOME: ", nome_medico[id_disponibilidade[i]])
+                           escreva("     ", esp_clinico_geral, " | ID: ", id_disponibilidade[i], " | NOME: ", nome_medico[id_disponibilidade[i]])
 
                            Se (disp_registro[i] = 1) Entao
                               Escreval(" | Turno: Manhï¿½")
@@ -3050,7 +3400,7 @@ Inicio
                   para i de 1 ate qtd_disp faca
                      se (especialidade_medico[id_disponibilidade[i]] = 2) e (semana[i] = diasemana) entao
                         se (disp_registro[i] = 1) ou (disp_registro[i] = 4) ou (disp_registro[i] = 5) entao
-                           escreva("         ", esp_clinico_geral, " | ID: ", id_disponibilidade[i], " | NOME: ", nome_medico[id_disponibilidade[i]])
+                           escreva("     ", esp_clinico_geral, " | ID: ", id_disponibilidade[i], " | NOME: ", nome_medico[id_disponibilidade[i]])
 
                            Se (disp_registro[i] = 1) Entao
                               Escreval(" | Turno: Manhï¿½")
@@ -3455,7 +3805,7 @@ Inicio
                   para i de 1 ate qtd_disp faca
                      se (especialidade_medico[id_disponibilidade[i]] = 2) e (semana[i] = diasemana) entao
                         se (disp_registro[i] = 1) ou (disp_registro[i] = 4) ou (disp_registro[i] = 5) entao
-                           escreva("         ", esp_clinico_geral, " | ID: ", id_disponibilidade[i], " | NOME: ", nome_medico[id_disponibilidade[i]])
+                           escreva("     ", esp_clinico_geral, " | ID: ", id_disponibilidade[i], " | NOME: ", nome_medico[id_disponibilidade[i]])
 
                            Se (disp_registro[i] = 1) Entao
                               Escreval(" | Turno: Manhï¿½")
@@ -3712,7 +4062,7 @@ Inicio
 
                se tem_clinico = falso entao
                   plantao_valido <- falso
-                  escreval(      "Nenhum Clinico Geral disponivel no turno da noite!")
+                  escreval("     Nenhum Clinico Geral disponivel no turno da noite!")
                senao
                   para i de 1 ate qtd_disp faca
                      se (especialidade_medico[id_disponibilidade[i]] = 2) e (semana[i] = diasemana) entao
@@ -3782,7 +4132,7 @@ Inicio
          escreval(" ")
          escreval(" ")
          escreval(" ")
-         
+
          escreval("----------------------------------------")
 
          se qtd_cad_medicos = 0 entao
