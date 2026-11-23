@@ -67,10 +67,10 @@ Var
 
    // PRE-CADASTRO DOS MEDICOS (APRESENTACAO)
    j, grupo, dia_ini: inteiro
-   nomes_pre: vetor[1..12] de caractere
+   nomes_pre: vetor[1..22] de caractere
 
    // AVISO DE COBERTURA INSUFICIENTE
-   qtd_turnos_insuficientes: inteiro
+   qtd_turnos_insuficientes, limite_medicos, repeticao: inteiro
    falhas_ped, falhas_cli, falhas_cir: inteiro
    av_dia, av_turno, av_esp, av_k: inteiro
    av_coberto, av_cobre_turno: logico
@@ -119,93 +119,254 @@ Inicio
       
    fimpara
 
+
    // PRE-CADASTRO DOS MEDICOS PARA A APRESENTACAO
-   // DEIXA OS TRES PLANTOES (MANHA, TARDE E NOITE) DE SEGUNDA A
-   // QUINTA PRONTOS. SEXTA FICA LIVRE PARA O CADASTRO MANUAL.
-   //    GRUPO 1 -> ESCALADOS NA SEGUNDA E TERCA (IDS 1 A 6)
-   //    GRUPO 2 -> ESCALADOS NA QUARTA E QUINTA (IDS 7 A 12)
-   //    J = 1   -> DISPONIBILIDADE 4 (MANHA E TARDE)
-   //    J = 2   -> DISPONIBILIDADE 3 (NOITE)
-   // PARA CADA J E CADASTRADO UM MEDICO DE CADA ESPECIALIDADE.
-   // ASSIM NENHUM MEDICO PASSA DE 4 PLANTOES NA SEMANA (R9).
+   // SEGUNDA A QUINTA: CADASTRO AUTOMATICO
+   // SEXTA: CADASTRO DOS MEDICOS PRE-DEFINIDOS
+   //
+   // GRUPO 1 -> SEGUNDA E TERCA
+   // GRUPO 2 -> QUARTA E QUINTA
+   //
+   // DISPONIBILIDADE 4 -> MANHA E TARDE
+   // DISPONIBILIDADE 3 -> NOITE
+   //
+   // CADA TURNO POSSUI:
+   // 1 PEDIATRA
+   // 2 CLINICOS
+   // 1 CIRURGIAO
+   //
+   // SEXTA:
+   // 2 CLINICOS MANHA E TARDE
+   // 2 CLINICOS NOITE
+   // 1 PEDIATRA NOITE
+   // 1 CIRURGIAO NOITE
+
+
+   // NOMES DOS MEDICOS
 
    nomes_pre[1] <- "JOAO"
    nomes_pre[2] <- "ENZO"
-   nomes_pre[3] <- "NINA"
-   nomes_pre[4] <- "LARA"
-   nomes_pre[5] <- "CAIO"
-   nomes_pre[6] <- "LUCA"
-   nomes_pre[7] <- "ANA"
-   nomes_pre[8] <- "EVA"
-   nomes_pre[9] <- "IAN"
-   nomes_pre[10] <- "LEO"
-   nomes_pre[11] <- "GIL"
-   nomes_pre[12] <- "RUI"
+   nomes_pre[3] <- "OTTO"
+   nomes_pre[4] <- "NINA"
+
+   nomes_pre[5] <- "LARA"
+   nomes_pre[6] <- "CAIO"
+   nomes_pre[7] <- "NOAH"
+   nomes_pre[8] <- "LUCA"
+
+   nomes_pre[9] <- "ANA"
+   nomes_pre[10] <- "EVA"
+   nomes_pre[11] <- "ARI"
+   nomes_pre[12] <- "IAN"
+
+   nomes_pre[13] <- "LEO"
+   nomes_pre[14] <- "GIL"
+   nomes_pre[15] <- "BEN"
+   nomes_pre[16] <- "RUI"
+
+   // SEXTA
+
+   nomes_pre[17] <- "DAVI"
+   nomes_pre[18] <- "IAGO"
+   nomes_pre[19] <- "NOEL"
+   nomes_pre[20] <- "HUGO"
+   nomes_pre[21] <- "LUIS"
+   nomes_pre[22] <- "ERIC"
+
+
+   // CADASTRO DE SEGUNDA A QUINTA
 
    para grupo de 1 ate 2 faca
 
       dia_ini <- grupo * 2 - 1
 
       para j de 1 ate 2 faca
+
+         se j = 1 entao
+            disponibilidade <- 4
+         senao
+            disponibilidade <- 3
+         fimse
+
          para especialidade de 1 ate 3 faca
 
-            id_atual <- qtd_cad_medicos + 1
+            // DOIS CLINICOS POR TURNO
+            // UMA UNIDADE DAS OUTRAS ESPECIALIDADES
 
-            se j = 1 entao
-               disponibilidade <- 4
-            senao
-               disponibilidade <- 3
-            fimse
+            limite_medicos <- 1
 
-            nome_medico[id_atual] <- nomes_pre[id_atual]
-            especialidade_medico[id_atual] <- especialidade
-            disp_medico[id_atual] <- disponibilidade
-
-            se especialidade = 1 entao
-               qtd_cad_pediatra <- qtd_cad_pediatra + 1
-            fimse
             se especialidade = 2 entao
-               qtd_cad_clinico <- qtd_cad_clinico + 1
-            fimse
-            se especialidade = 3 entao
-               qtd_cad_cirurgiao <- qtd_cad_cirurgiao + 1
+               limite_medicos <- 2
             fimse
 
-            qtd_cad_medicos <- qtd_cad_medicos + 1
+            para repeticao de 1 ate limite_medicos faca
 
-            // ESCALA O MEDICO NOS DOIS DIAS DO SEU GRUPO
-            para diasemana de dia_ini ate dia_ini + 1 faca
-               qtd_disp <- qtd_disp + 1
-               id_disponibilidade[qtd_disp] <- id_atual
-               semana[qtd_disp] <- diasemana
-               disp_registro[qtd_disp] <- disponibilidade
-            fimpara
+               id_atual <- qtd_cad_medicos + 1
 
-            // ATUALIZAR AS QUANTIDADES DOS TURNOS
-            para turno de 1 ate 3 faca
-               trabalha_turno <- falso
-               se disponibilidade = turno entao
-                  trabalha_turno <- verdadeiro
+               nome_medico[id_atual] <- nomes_pre[id_atual]
+               especialidade_medico[id_atual] <- especialidade
+               disp_medico[id_atual] <- disponibilidade
+
+               // CONTABILIZAR MEDICOS POR ESPECIALIDADE
+
+               se especialidade = 1 entao
+                  qtd_cad_pediatra <- qtd_cad_pediatra + 1
                fimse
-               se (disponibilidade = 4) e (turno <= 2) entao
-                  trabalha_turno <- verdadeiro
+
+               se especialidade = 2 entao
+                  qtd_cad_clinico <- qtd_cad_clinico + 1
                fimse
-               se trabalha_turno entao
-                  se especialidade = 1 entao
-                     qtd_pediatras[turno] <- qtd_pediatras[turno] + 1
-                  fimse
-                  se especialidade = 2 entao
-                     qtd_clinicos[turno] <- qtd_clinicos[turno] + 1
-                  fimse
-                  se especialidade = 3 entao
-                     qtd_cirurgioes[turno] <- qtd_cirurgioes[turno] + 1
-                  fimse
-                  cadastrado[turno] <- 1
+
+               se especialidade = 3 entao
+                  qtd_cad_cirurgiao <- qtd_cad_cirurgiao + 1
                fimse
+
+               qtd_cad_medicos <- qtd_cad_medicos + 1
+
+               // ESCALAR O MEDICO NOS DOIS DIAS DO GRUPO
+
+               para diasemana de dia_ini ate dia_ini + 1 faca
+
+                  qtd_disp <- qtd_disp + 1
+
+                  id_disponibilidade[qtd_disp] <- id_atual
+                  semana[qtd_disp] <- diasemana
+                  disp_registro[qtd_disp] <- disponibilidade
+
+               fimpara
+
+               // ATUALIZAR QUANTIDADES DOS TURNOS
+
+               para turno de 1 ate 3 faca
+
+                  trabalha_turno <- falso
+
+                  se disponibilidade = turno entao
+                     trabalha_turno <- verdadeiro
+                  fimse
+
+                  se (disponibilidade = 4) e (turno <= 2) entao
+                     trabalha_turno <- verdadeiro
+                  fimse
+
+                  se trabalha_turno entao
+
+                     se especialidade = 1 entao
+                        qtd_pediatras[turno] <- qtd_pediatras[turno] + 1
+                     fimse
+
+                     se especialidade = 2 entao
+                        qtd_clinicos[turno] <- qtd_clinicos[turno] + 1
+                     fimse
+
+                     se especialidade = 3 entao
+                        qtd_cirurgioes[turno] <- qtd_cirurgioes[turno] + 1
+                     fimse
+
+                     cadastrado[turno] <- 1
+
+                  fimse
+
+               fimpara
+
             fimpara
 
          fimpara
+
       fimpara
+
+   fimpara
+
+
+   // CADASTRO AUTOMATICO DE SEXTA-FEIRA
+
+   para i de 17 ate 22 faca
+
+      id_atual <- qtd_cad_medicos + 1
+
+      nome_medico[id_atual] <- nomes_pre[id_atual]
+
+      // DEFINIR ESPECIALIDADE
+
+      se (id_atual >= 17) e (id_atual <= 20) entao
+         especialidade <- 2
+      senao
+         se id_atual = 21 entao
+            especialidade <- 1
+         senao
+            especialidade <- 3
+         fimse
+      fimse
+
+      // DEFINIR DISPONIBILIDADE
+
+      se (id_atual = 17) ou (id_atual = 18) entao
+         disponibilidade <- 4
+      senao
+         disponibilidade <- 3
+      fimse
+
+      especialidade_medico[id_atual] <- especialidade
+      disp_medico[id_atual] <- disponibilidade
+
+      // CONTABILIZAR MEDICOS POR ESPECIALIDADE
+
+      se especialidade = 1 entao
+         qtd_cad_pediatra <- qtd_cad_pediatra + 1
+      fimse
+
+      se especialidade = 2 entao
+         qtd_cad_clinico <- qtd_cad_clinico + 1
+      fimse
+
+      se especialidade = 3 entao
+         qtd_cad_cirurgiao <- qtd_cad_cirurgiao + 1
+      fimse
+
+      qtd_cad_medicos <- qtd_cad_medicos + 1
+
+      // REGISTRAR DISPONIBILIDADE NA SEXTA
+
+      qtd_disp <- qtd_disp + 1
+
+      id_disponibilidade[qtd_disp] <- id_atual
+      semana[qtd_disp] <- 5
+      disp_registro[qtd_disp] <- disponibilidade
+
+      // ATUALIZAR QUANTIDADES DOS TURNOS
+
+      para turno de 1 ate 3 faca
+
+         trabalha_turno <- falso
+
+         se disponibilidade = turno entao
+            trabalha_turno <- verdadeiro
+         fimse
+
+         se (disponibilidade = 4) e (turno <= 2) entao
+            trabalha_turno <- verdadeiro
+         fimse
+
+         se trabalha_turno entao
+
+            se especialidade = 1 entao
+               qtd_pediatras[turno] <- qtd_pediatras[turno] + 1
+            fimse
+
+            se especialidade = 2 entao
+               qtd_clinicos[turno] <- qtd_clinicos[turno] + 1
+            fimse
+
+            se especialidade = 3 entao
+               qtd_cirurgioes[turno] <- qtd_cirurgioes[turno] + 1
+            fimse
+
+            cadastrado[turno] <- 1
+
+         fimse
+
+      fimpara
+
    fimpara
 
 
