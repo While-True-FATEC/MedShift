@@ -65,6 +65,10 @@ Var
    r_media, r_percentual: real
    r_inclui: logico
 
+   // PRE-CADASTRO DOS MEDICOS (APRESENTACAO)
+   j, grupo, dia_ini: inteiro
+   nomes_pre: vetor[1..12] de caractere
+
 Inicio
 
    // IDENTIFICACAO DAS ESPECIALIDADES
@@ -109,356 +113,94 @@ Inicio
       
    fimpara
 
-   qtd_cad_medicos <- 12
-
-   qtd_cad_pediatra <- 4
-   qtd_cad_clinico <- 4
-   qtd_cad_cirurgiao <-  4
-
-
-   // Inicialização dos médicos
-
-   nome_medico[1] <- "JOAO"
-   especialidade_medico[1] <- 1
-   disp_medico[1] <- 4
-
-   qtd_disp <- 1
-   id_disponibilidade[1] <- 1
-   semana[1] <- 1
-   disp_registro[1] <- 4
-
-   qtd_pediatras[1] <- 1
-   cadastrado[1] <- 1
-
-   //Clinicos
-
-   nome_medico[2] <- "ENZO"
-   especialidade_medico[2] <- 2
-   disp_medico[2] <- 4
-
-   qtd_disp <- 2
-   id_disponibilidade[2] <- 2
-   semana[2] <- 1
-   disp_registro[2] <- 4
-
-   qtd_clinicos[1] <- 1
-   cadastrado[2] <- 2
-
-   // Cirurgiões
-
-   nome_medico[3] <- "NINA"
-   especialidade_medico[3] <- 3
-   disp_medico[3] <- 4
-
-   qtd_disp <- 3
-   id_disponibilidade[3] <- 3
-   semana[3] <- 1
-   disp_registro[3] <- 4
-
-   qtd_cirurgioes[1] <- 1
-   cadastrado[3] <- 3
-
-
-   // NOITE
-
-   nome_medico[4] <- "LARA"
-   especialidade_medico[4] <- 1
-   disp_medico[4] <- 3
-
-   qtd_disp <- 4
-   id_disponibilidade[4] <- 4
-   semana[4] <- 1
-   disp_registro[4] <- 3
-
-   qtd_pediatras[2] <- 2
-   cadastrado[1] <- 1
-
-   //Clinicos
-
-   nome_medico[5] <- "CAIO"
-   especialidade_medico[5] <- 2
-   disp_medico[5] <- 3
-
-   qtd_disp <- 5
-   id_disponibilidade[5] <- 5
-   semana[5] <- 1
-   disp_registro[5] <- 3
-
-   qtd_clinicos[2] <- 2
-   cadastrado[2] <- 2
-
-   // Cirurgiões
-
-   nome_medico[6] <- "LUCA"
-   especialidade_medico[6] <- 3
-   disp_medico[6] <- 3
-
-   qtd_disp <- 6
-   id_disponibilidade[6] <- 6
-   semana[6] <- 1
-   disp_registro[6] <- 3
-
-   qtd_cirurgioes[2] <- 2
-   cadastrado[3] <- 3
-
-
-   //        TERÇA
-
-
-   nome_medico[1] <- "JOAO"
-   especialidade_medico[1] <- 1
-   disp_medico[1] <- 4
-
-   qtd_disp <- 7
-   id_disponibilidade[7] <- 1
-   semana[7] <- 2
-   disp_registro[7] <- 4
-
-   qtd_pediatras[1] <- 1
-   cadastrado[1] <- 1
-
-   //Clinicos
-
-   nome_medico[2] <- "ENZO"
-   especialidade_medico[2] <- 2
-   disp_medico[2] <- 4
-
-   qtd_disp <- 8
-   id_disponibilidade[8] <- 2
-   semana[8] <- 2
-   disp_registro[8] <- 4
-
-   qtd_clinicos[1] <- 1
-   cadastrado[2] <- 2
-
-   // Cirurgiões
-
-   nome_medico[3] <- "NINA"
-   especialidade_medico[3] <- 3
-   disp_medico[3] <- 4
-
-   qtd_disp <- 9
-   id_disponibilidade[9] <- 3
-   semana[9] <- 2
-   disp_registro[9] <- 4
-
-   qtd_cirurgioes[1] <- 1
-   cadastrado[3] <- 3
-
-   // NOITE
-
-   nome_medico[4] <- "LARA"
-   especialidade_medico[4] <- 1
-   disp_medico[4] <- 3
-
-   qtd_disp <- 10
-   id_disponibilidade[10] <- 4
-   semana[10] <- 2
-   disp_registro[10] <- 3
-
-   qtd_pediatras[2] <- 2
-   cadastrado[1] <- 1
-
-   //Clinicos
-
-   nome_medico[5] <- "CAIO"
-   especialidade_medico[5] <- 2
-   disp_medico[5] <- 3
-
-   qtd_disp <- 11
-   id_disponibilidade[11] <- 5
-   semana[11] <- 2
-   disp_registro[11] <- 3
-
-   qtd_clinicos[2] <- 2
-   cadastrado[2] <- 2
-
-   // Cirurgiões
-
-   nome_medico[6] <- "LUCA"
-   especialidade_medico[6] <- 3
-   disp_medico[6] <- 3
-
-   qtd_disp <- 12
-   id_disponibilidade[12] <- 6
-   semana[12] <- 2
-   disp_registro[12] <- 3
-
-   qtd_cirurgioes[2] <- 2
-   cadastrado[3] <- 3
-
-
-   //        QUARTA
-
-
-   nome_medico[7] <- "ANA"
-   especialidade_medico[7] <- 1
-   disp_medico[7] <- 4
-
-   qtd_disp <- 13
-   id_disponibilidade[13] <- 7
-   semana[13] <- 3
-   disp_registro[13] <- 4
-
-   qtd_pediatras[3] <- 3
-   cadastrado[4] <- 4
-
-   //Clinicos
-
-   nome_medico[8] <- "EVA"
-   especialidade_medico[8] <- 2
-   disp_medico[8] <- 4
-
-   qtd_disp <- 14
-   id_disponibilidade[14] <- 8
-   semana[14] <- 3
-   disp_registro[14] <- 4
-
-   qtd_clinicos[3] <- 3
-   cadastrado[5] <- 5
-
-   // Cirurgiões
-
-   nome_medico[9] <- "IAN"
-   especialidade_medico[9] <- 3
-   disp_medico[9] <- 4
-
-   qtd_disp <- 15
-   id_disponibilidade[15] <- 9
-   semana[15] <- 3
-   disp_registro[15] <- 4
-
-   qtd_cirurgioes[3] <- 3
-   cadastrado[6] <- 6
-
-   // NOITE
-
-   nome_medico[10] <- "LEO"
-   especialidade_medico[10] <- 1
-   disp_medico[10] <- 3
-
-   qtd_disp <- 16
-   id_disponibilidade[16] <- 10
-   semana[16] <- 3
-   disp_registro[16] <- 3
-
-   qtd_pediatras[1] <- 1
-   cadastrado[1] <- 1
-
-   //Clinicos
-
-   nome_medico[11] <- "GIL"
-   especialidade_medico[11] <- 2
-   disp_medico[11] <- 3
-
-   qtd_disp <- 17
-   id_disponibilidade[17] <- 11
-   semana[17] <- 3
-   disp_registro[17] <- 3
-
-   qtd_clinicos[2] <- 2
-   cadastrado[2] <- 2
-
-   // Cirurgiões
-
-   nome_medico[12] <- "RUI"
-   especialidade_medico[12] <- 3
-   disp_medico[12] <- 3
-
-   qtd_disp <- 18
-   id_disponibilidade[18] <- 12
-   semana[18] <- 3
-   disp_registro[18] <- 3
-
-   qtd_cirurgioes[3] <- 3
-   cadastrado[3] <- 3
-
-
-   //           QUINTA
-
-
-   nome_medico[7] <- "ANA"
-   especialidade_medico[7] <- 1
-   disp_medico[7] <- 4
-
-   qtd_disp <- 19
-   id_disponibilidade[19] <- 7
-   semana[19] <- 4
-   disp_registro[19] <- 4
-
-   qtd_pediatras[1] <- 1
-   cadastrado[1] <- 1
-
-   //Clinicos
-
-   nome_medico[8] <- "EVA"
-   especialidade_medico[8] <- 2
-   disp_medico[8] <- 4
-
-   qtd_disp <- 20
-   id_disponibilidade[20] <- 8
-   semana[20] <- 4
-   disp_registro[20] <- 4
-
-   qtd_clinicos[2] <- 2
-   cadastrado[2] <- 2
-
-   // Cirurgiões
-
-   nome_medico[9] <- "IAN"
-   especialidade_medico[9] <- 3
-   disp_medico[9] <- 4
-
-   qtd_disp <- 21
-   id_disponibilidade[21] <- 9
-   semana[21] <- 4
-   disp_registro[21] <- 4
-
-   qtd_cirurgioes[3] <- 3
-   cadastrado[3] <- 3
-
-
-   // NOITE
-
-   nome_medico[10] <- "LEO"
-   especialidade_medico[10] <- 1
-   disp_medico[10] <- 3
-
-   qtd_disp <- 22
-   id_disponibilidade[22] <- 10
-   semana[22] <- 4
-   disp_registro[22] <- 3
-
-   qtd_pediatras[4] <- 4
-   cadastrado[1] <- 1
-
-   //Clinicos
-
-   nome_medico[11] <- "GIL"
-   especialidade_medico[11] <- 2
-   disp_medico[11] <- 3
-
-   qtd_disp <- 23
-   id_disponibilidade[23] <- 11
-   semana[23] <- 4
-   disp_registro[23] <- 3
-
-   qtd_clinicos[2] <- 2
-   cadastrado[2] <- 2
-
-   // Cirurgiões
-
-   nome_medico[12] <- "RUI"
-   especialidade_medico[12] <- 3
-   disp_medico[12] <- 3
-
-   qtd_disp <- 24
-   id_disponibilidade[24] <- 12
-   semana[24] <- 4
-   disp_registro[24] <- 3
-
-   qtd_cirurgioes[3] <- 3
-   cadastrado[3] <- 3
+   // PRE-CADASTRO DOS MEDICOS PARA A APRESENTACAO
+   // DEIXA OS TRES PLANTOES (MANHA, TARDE E NOITE) DE SEGUNDA A
+   // QUINTA PRONTOS. SEXTA FICA LIVRE PARA O CADASTRO MANUAL.
+   //    GRUPO 1 -> ESCALADOS NA SEGUNDA E TERCA (IDS 1 A 6)
+   //    GRUPO 2 -> ESCALADOS NA QUARTA E QUINTA (IDS 7 A 12)
+   //    J = 1   -> DISPONIBILIDADE 4 (MANHA E TARDE)
+   //    J = 2   -> DISPONIBILIDADE 3 (NOITE)
+   // PARA CADA J E CADASTRADO UM MEDICO DE CADA ESPECIALIDADE.
+   // ASSIM NENHUM MEDICO PASSA DE 4 PLANTOES NA SEMANA (R9).
+
+   nomes_pre[1] <- "JOAO"
+   nomes_pre[2] <- "ENZO"
+   nomes_pre[3] <- "NINA"
+   nomes_pre[4] <- "LARA"
+   nomes_pre[5] <- "CAIO"
+   nomes_pre[6] <- "LUCA"
+   nomes_pre[7] <- "ANA"
+   nomes_pre[8] <- "EVA"
+   nomes_pre[9] <- "IAN"
+   nomes_pre[10] <- "LEO"
+   nomes_pre[11] <- "GIL"
+   nomes_pre[12] <- "RUI"
+
+   para grupo de 1 ate 2 faca
+
+      dia_ini <- grupo * 2 - 1
+
+      para j de 1 ate 2 faca
+         para especialidade de 1 ate 3 faca
+
+            id_atual <- qtd_cad_medicos + 1
+
+            se j = 1 entao
+               disponibilidade <- 4
+            senao
+               disponibilidade <- 3
+            fimse
+
+            nome_medico[id_atual] <- nomes_pre[id_atual]
+            especialidade_medico[id_atual] <- especialidade
+            disp_medico[id_atual] <- disponibilidade
+
+            se especialidade = 1 entao
+               qtd_cad_pediatra <- qtd_cad_pediatra + 1
+            fimse
+            se especialidade = 2 entao
+               qtd_cad_clinico <- qtd_cad_clinico + 1
+            fimse
+            se especialidade = 3 entao
+               qtd_cad_cirurgiao <- qtd_cad_cirurgiao + 1
+            fimse
+
+            qtd_cad_medicos <- qtd_cad_medicos + 1
+
+            // ESCALA O MEDICO NOS DOIS DIAS DO SEU GRUPO
+            para diasemana de dia_ini ate dia_ini + 1 faca
+               qtd_disp <- qtd_disp + 1
+               id_disponibilidade[qtd_disp] <- id_atual
+               semana[qtd_disp] <- diasemana
+               disp_registro[qtd_disp] <- disponibilidade
+            fimpara
+
+            // ATUALIZAR AS QUANTIDADES DOS TURNOS
+            para turno de 1 ate 3 faca
+               trabalha_turno <- falso
+               se disponibilidade = turno entao
+                  trabalha_turno <- verdadeiro
+               fimse
+               se (disponibilidade = 4) e (turno <= 2) entao
+                  trabalha_turno <- verdadeiro
+               fimse
+               se trabalha_turno entao
+                  se especialidade = 1 entao
+                     qtd_pediatras[turno] <- qtd_pediatras[turno] + 1
+                  fimse
+                  se especialidade = 2 entao
+                     qtd_clinicos[turno] <- qtd_clinicos[turno] + 1
+                  fimse
+                  se especialidade = 3 entao
+                     qtd_cirurgioes[turno] <- qtd_cirurgioes[turno] + 1
+                  fimse
+                  cadastrado[turno] <- 1
+               fimse
+            fimpara
+
+         fimpara
+      fimpara
+   fimpara
 
 
    // APRESENTACAO DO SISTEMA
