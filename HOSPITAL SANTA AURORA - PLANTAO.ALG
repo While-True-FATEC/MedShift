@@ -3945,6 +3945,7 @@ Inicio
          fimse
 
          escreval("----------------------------------------")
+fimalgoritmo
 outrocaso
    limpatela
    escreval("Op��o inv�lida!")
