@@ -555,11 +555,11 @@ Inicio
          escreval(" ")
          escreval("Qual o dia da semana deseja consultar:")
          escreval("1 - Segunda-Feira")
-         escreval("2 - Terï¿½a-Feira")
+         escreval("2 - Terca-Feira")
          escreval("3 - Quarta-Feira")
          escreval("4 - Quinta-Feira")
          escreval("5 - Sexta-Feira")
-         escreva("Escolha uma opï¿½ï¿½o: ")
+         escreva("Escolha uma opcao: ")
          leia(diasemana)
 
          enquanto (diasemana < 1) ou (diasemana > 5) faca
@@ -1702,7 +1702,7 @@ Inicio
                   escreval("4 - Manha e Tarde")
                   escreval("5 - Manha e Noite")
                   escreval("6 - Tarde e Noite")
-                  escreva("Escolha uma opção: ")
+                  escreva("Escolha uma opï¿½ï¿½o: ")
                   leia(disponibilidade)
 
                   enquanto (disponibilidade < 1) ou (disponibilidade > 6) faca
