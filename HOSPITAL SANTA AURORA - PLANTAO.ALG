@@ -386,6 +386,13 @@ Inicio
                   escreva("Nome do especialista: ")
                   leia(nome_medico[id_atual])
 
+                  // O NOME DO MEDICO NAO PODE SER VAZIO
+                  enquanto nome_medico[id_atual] = "" faca
+                     escreval("O nome do medico nao pode ser vazio!")
+                     escreva("Nome do especialista: ")
+                     leia(nome_medico[id_atual])
+                  fimenquanto
+
                   // GUARDAR OS DADOS DO MEDICO
 
                   especialidade_medico[id_atual] <- especialidade
@@ -1171,6 +1178,11 @@ Inicio
                   se opcao_alteracao = 1 entao
                      escreva("Digite o novo nome: ")
                      leia(nome_medico[idbusca])
+                     enquanto nome_medico[idbusca] = "" faca
+                        escreval("O nome do medico nao pode ser vazio!")
+                        escreva("Digite o novo nome: ")
+                        leia(nome_medico[idbusca])
+                     fimenquanto
                      escreval("Nome alterado com sucesso!")
                   fimse
 
