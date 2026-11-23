@@ -1907,7 +1907,7 @@ Inicio
                   fimse
 
                   se trabalhou_noite_anterior e quer_manha entao
-                  limpatela
+                     limpatela
                      escreval("ERRO: Este medico trabalhou no turno da noite no dia anterior.")
                      escreval("Ele nao pode ser escalado para trabalhar de manha no dia seguinte.")
                      pode_cadastrar <- 0
@@ -1962,88 +1962,88 @@ Inicio
                      escreval("Medico atribuido com sucesso!")
 
                      // REUNIR OS TURNOS DE TODAS AS DISPONIBILIDADES DO MEDICO
-                  tem_manha <- falso
-                  tem_tarde <- falso
-                  tem_noite <- falso
+                     tem_manha <- falso
+                     tem_tarde <- falso
+                     tem_noite <- falso
 
-                  para i de 1 ate qtd_disp faca
-                     se id_disponibilidade[i] = idbusca entao
-                        se (disp_registro[i] = 1) ou (disp_registro[i] = 4) ou (disp_registro[i] = 5) entao
-                           tem_manha <- verdadeiro
+                     para i de 1 ate qtd_disp faca
+                        se id_disponibilidade[i] = idbusca entao
+                           se (disp_registro[i] = 1) ou (disp_registro[i] = 4) ou (disp_registro[i] = 5) entao
+                              tem_manha <- verdadeiro
+                           fimse
+                           se (disp_registro[i] = 2) ou (disp_registro[i] = 4) ou (disp_registro[i] = 6) entao
+                              tem_tarde <- verdadeiro
+                           fimse
+                           se (disp_registro[i] = 3) ou (disp_registro[i] = 5) ou (disp_registro[i] = 6) entao
+                              tem_noite <- verdadeiro
+                           fimse
                         fimse
-                        se (disp_registro[i] = 2) ou (disp_registro[i] = 4) ou (disp_registro[i] = 6) entao
-                           tem_tarde <- verdadeiro
-                        fimse
-                        se (disp_registro[i] = 3) ou (disp_registro[i] = 5) ou (disp_registro[i] = 6) entao
-                           tem_noite <- verdadeiro
-                        fimse
-                     fimse
-                  fimpara
+                     fimpara
 
 
-                  se tem_manha e tem_tarde entao
-                     disp_medico[idbusca] <- 4
-                  senao
-                     se tem_manha e tem_noite entao
-                        disp_medico[idbusca] <- 5
+                     se tem_manha e tem_tarde entao
+                        disp_medico[idbusca] <- 4
                      senao
-                        se tem_tarde e tem_noite entao
-                           disp_medico[idbusca] <- 6
+                        se tem_manha e tem_noite entao
+                           disp_medico[idbusca] <- 5
                         senao
-                           se tem_manha entao
-                              disp_medico[idbusca] <- 1
+                           se tem_tarde e tem_noite entao
+                              disp_medico[idbusca] <- 6
                            senao
-                              se tem_tarde entao
-                                 disp_medico[idbusca] <- 2
+                              se tem_manha entao
+                                 disp_medico[idbusca] <- 1
                               senao
-                                 se tem_noite entao
-                                    disp_medico[idbusca] <- 3
+                                 se tem_tarde entao
+                                    disp_medico[idbusca] <- 2
+                                 senao
+                                    se tem_noite entao
+                                       disp_medico[idbusca] <- 3
+                                    fimse
                                  fimse
                               fimse
                            fimse
                         fimse
                      fimse
-                  fimse
 
-                  // RECALCULAR AS QUANTIDADES DOS TURNOS
+                     // RECALCULAR AS QUANTIDADES DOS TURNOS
 
-                  // RECALCULAR CONTADORES: CADA MEDICO CONTA UMA VEZ POR TURNO
-                  para turno de 1 ate 3 faca
-                     qtd_pediatras[turno] <- 0
-                     qtd_clinicos[turno] <- 0
-                     qtd_cirurgioes[turno] <- 0
-                     cadastrado[turno] <- 0
-                  fimpara
-
-                  para i de 1 ate qtd_cad_medicos faca
+                     // RECALCULAR CONTADORES: CADA MEDICO CONTA UMA VEZ POR TURNO
                      para turno de 1 ate 3 faca
-                        trabalha_turno <- falso
-                        se disp_medico[i] = turno entao
-                           trabalha_turno <- verdadeiro
-                        fimse
-                        se (disp_medico[i] = 4) e (turno <= 2) entao
-                           trabalha_turno <- verdadeiro
-                        fimse
-                        se (disp_medico[i] = 5) e ((turno = 1) ou (turno = 3)) entao
-                           trabalha_turno <- verdadeiro
-                        fimse
-                        se (disp_medico[i] = 6) e (turno >= 2) entao
-                           trabalha_turno <- verdadeiro
-                        fimse
-                        se trabalha_turno entao
-                           se especialidade_medico[i] = 1 entao
-                              qtd_pediatras[turno] <- qtd_pediatras[turno] + 1
-                           fimse
-                           se especialidade_medico[i] = 2 entao
-                              qtd_clinicos[turno] <- qtd_clinicos[turno] + 1
-                           fimse
-                           se especialidade_medico[i] = 3 entao
-                              qtd_cirurgioes[turno] <- qtd_cirurgioes[turno] + 1
-                           fimse
-                           cadastrado[turno] <- 1
-                        fimse
+                        qtd_pediatras[turno] <- 0
+                        qtd_clinicos[turno] <- 0
+                        qtd_cirurgioes[turno] <- 0
+                        cadastrado[turno] <- 0
                      fimpara
-                  fimpara
+
+                     para i de 1 ate qtd_cad_medicos faca
+                        para turno de 1 ate 3 faca
+                           trabalha_turno <- falso
+                           se disp_medico[i] = turno entao
+                              trabalha_turno <- verdadeiro
+                           fimse
+                           se (disp_medico[i] = 4) e (turno <= 2) entao
+                              trabalha_turno <- verdadeiro
+                           fimse
+                           se (disp_medico[i] = 5) e ((turno = 1) ou (turno = 3)) entao
+                              trabalha_turno <- verdadeiro
+                           fimse
+                           se (disp_medico[i] = 6) e (turno >= 2) entao
+                              trabalha_turno <- verdadeiro
+                           fimse
+                           se trabalha_turno entao
+                              se especialidade_medico[i] = 1 entao
+                                 qtd_pediatras[turno] <- qtd_pediatras[turno] + 1
+                              fimse
+                              se especialidade_medico[i] = 2 entao
+                                 qtd_clinicos[turno] <- qtd_clinicos[turno] + 1
+                              fimse
+                              se especialidade_medico[i] = 3 entao
+                                 qtd_cirurgioes[turno] <- qtd_cirurgioes[turno] + 1
+                              fimse
+                              cadastrado[turno] <- 1
+                           fimse
+                        fimpara
+                     fimpara
                   fimse
                fimse
 
