@@ -69,6 +69,12 @@ Var
    j, grupo, dia_ini: inteiro
    nomes_pre: vetor[1..12] de caractere
 
+   // AVISO DE COBERTURA INSUFICIENTE
+   qtd_turnos_insuficientes: inteiro
+   falhas_ped, falhas_cli, falhas_cir: inteiro
+   av_dia, av_turno, av_esp, av_k: inteiro
+   av_coberto, av_cobre_turno: logico
+
 Inicio
 
    // IDENTIFICACAO DAS ESPECIALIDADES
@@ -231,6 +237,7 @@ Inicio
       escreval("4 - Atribuir Semana")
       escreval("5 - Resetar escala")
       escreval("6 - Relatorio semanal")
+      escreval("7 - Avisos de cobertura da semana")
       escreval("0 - Finalizar o plantao")
       escreval("----------------------------------------")
       escreva("Escolha uma opcao: ")
@@ -2049,6 +2056,138 @@ Inicio
          senao
             escreval("SEMANA COM COBERTURA INSUFICIENTE")
          fimse
+
+      caso 7
+
+         limpatela
+
+         se qtd_cad_medicos = 0 entao
+            escreval("Nenhum medico foi cadastrado!")
+         fimse
+
+         // AVISO: TURNOS COM COBERTURA INSUFICIENTE NA SEMANA
+         // PERCORRE SEGUNDA A SEXTA, MANHA/TARDE/NOITE, E INFORMA QUAIS
+         // ESPECIALIDADES NAO POSSUEM NENHUM MEDICO ESCALADO NO TURNO
+         qtd_turnos_insuficientes <- 0
+         falhas_ped <- 0
+         falhas_cli <- 0
+         falhas_cir <- 0
+
+         escreval(" ")
+         escreval("----------------------------------------")
+         escreval("  AVISO: TURNOS COM COBERTURA INSUFICIENTE")
+         escreval("----------------------------------------")
+
+         para av_dia de 1 ate 5 faca
+            para av_turno de 1 ate 3 faca
+
+               especialidades_faltando <- ""
+
+               para av_esp de 1 ate 3 faca
+
+                  av_coberto <- falso
+
+                  para av_k de 1 ate qtd_disp faca
+                     se (semana[av_k] = av_dia) e (especialidade_medico[id_disponibilidade[av_k]] = av_esp) entao
+
+                        av_cobre_turno <- falso
+
+                        se disp_registro[av_k] = av_turno entao
+                           av_cobre_turno <- verdadeiro
+                        fimse
+                        se (disp_registro[av_k] = 4) e (av_turno <= 2) entao
+                           av_cobre_turno <- verdadeiro
+                        fimse
+                        se (disp_registro[av_k] = 5) e ((av_turno = 1) ou (av_turno = 3)) entao
+                           av_cobre_turno <- verdadeiro
+                        fimse
+                        se (disp_registro[av_k] = 6) e (av_turno >= 2) entao
+                           av_cobre_turno <- verdadeiro
+                        fimse
+                        se disp_registro[av_k] = 7 entao
+                           av_cobre_turno <- verdadeiro
+                        fimse
+
+                        se av_cobre_turno entao
+                           av_coberto <- verdadeiro
+                        fimse
+
+                     fimse
+                  fimpara
+
+                  // MONTA A LISTA DE ESPECIALIDADES QUE FALTARAM NO TURNO
+                  // E CONTABILIZA AS FALHAS POR ESPECIALIDADE
+                  se av_coberto = falso entao
+                     se especialidades_faltando <> "" entao
+                        especialidades_faltando <- especialidades_faltando + ", "
+                     fimse
+                     se av_esp = 1 entao
+                        especialidades_faltando <- especialidades_faltando + esp_pediatra
+                        falhas_ped <- falhas_ped + 1
+                     fimse
+                     se av_esp = 2 entao
+                        especialidades_faltando <- especialidades_faltando + esp_clinico_geral
+                        falhas_cli <- falhas_cli + 1
+                     fimse
+                     se av_esp = 3 entao
+                        especialidades_faltando <- especialidades_faltando + esp_cirurgiao
+                        falhas_cir <- falhas_cir + 1
+                     fimse
+                  fimse
+
+               fimpara
+
+               se especialidades_faltando <> "" entao
+
+                  qtd_turnos_insuficientes <- qtd_turnos_insuficientes + 1
+
+                  se av_dia = 1 entao
+                     escreva("Segunda-Feira")
+                  fimse
+                  se av_dia = 2 entao
+                     escreva("Terca-Feira")
+                  fimse
+                  se av_dia = 3 entao
+                     escreva("Quarta-Feira")
+                  fimse
+                  se av_dia = 4 entao
+                     escreva("Quinta-Feira")
+                  fimse
+                  se av_dia = 5 entao
+                     escreva("Sexta-Feira")
+                  fimse
+
+                  se av_turno = 1 entao
+                     escreva(" | Manha")
+                  fimse
+                  se av_turno = 2 entao
+                     escreva(" | Tarde")
+                  fimse
+                  se av_turno = 3 entao
+                     escreva(" | Noite")
+                  fimse
+
+                  escreval(" | Falta: ", especialidades_faltando)
+
+               fimse
+
+            fimpara
+         fimpara
+
+         escreval(" ")
+
+         se qtd_turnos_insuficientes = 0 entao
+            escreval("Todos os turnos da semana estao com cobertura completa.")
+         senao
+            escreval("Total de turnos com cobertura insuficiente: ", qtd_turnos_insuficientes)
+            escreval("Falhas por especialidade:")
+            escreval("   ", esp_pediatra, ": ", falhas_ped)
+            escreval("   ", esp_clinico_geral, ": ", falhas_cli)
+            escreval("   ", esp_cirurgiao, ": ", falhas_cir)
+         fimse
+
+         escreval("----------------------------------------")
+
 
       caso 0
 
@@ -4083,6 +4222,132 @@ Inicio
 
          escreval(" ")
          escreval(" ")
+         escreval(" ")
+
+         // AVISO: TURNOS COM COBERTURA INSUFICIENTE NA SEMANA
+         // PERCORRE SEGUNDA A SEXTA, MANHA/TARDE/NOITE, E INFORMA QUAIS
+         // ESPECIALIDADES NAO POSSUEM NENHUM MEDICO ESCALADO NO TURNO
+         qtd_turnos_insuficientes <- 0
+         falhas_ped <- 0
+         falhas_cli <- 0
+         falhas_cir <- 0
+
+         escreval(" ")
+         escreval("----------------------------------------")
+         escreval("  AVISO: TURNOS COM COBERTURA INSUFICIENTE")
+         escreval("----------------------------------------")
+
+         para av_dia de 1 ate 5 faca
+            para av_turno de 1 ate 3 faca
+
+               especialidades_faltando <- ""
+
+               para av_esp de 1 ate 3 faca
+
+                  av_coberto <- falso
+
+                  para av_k de 1 ate qtd_disp faca
+                     se (semana[av_k] = av_dia) e (especialidade_medico[id_disponibilidade[av_k]] = av_esp) entao
+
+                        av_cobre_turno <- falso
+
+                        se disp_registro[av_k] = av_turno entao
+                           av_cobre_turno <- verdadeiro
+                        fimse
+                        se (disp_registro[av_k] = 4) e (av_turno <= 2) entao
+                           av_cobre_turno <- verdadeiro
+                        fimse
+                        se (disp_registro[av_k] = 5) e ((av_turno = 1) ou (av_turno = 3)) entao
+                           av_cobre_turno <- verdadeiro
+                        fimse
+                        se (disp_registro[av_k] = 6) e (av_turno >= 2) entao
+                           av_cobre_turno <- verdadeiro
+                        fimse
+                        se disp_registro[av_k] = 7 entao
+                           av_cobre_turno <- verdadeiro
+                        fimse
+
+                        se av_cobre_turno entao
+                           av_coberto <- verdadeiro
+                        fimse
+
+                     fimse
+                  fimpara
+
+                  // MONTA A LISTA DE ESPECIALIDADES QUE FALTARAM NO TURNO
+                  // E CONTABILIZA AS FALHAS POR ESPECIALIDADE
+                  se av_coberto = falso entao
+                     se especialidades_faltando <> "" entao
+                        especialidades_faltando <- especialidades_faltando + ", "
+                     fimse
+                     se av_esp = 1 entao
+                        especialidades_faltando <- especialidades_faltando + esp_pediatra
+                        falhas_ped <- falhas_ped + 1
+                     fimse
+                     se av_esp = 2 entao
+                        especialidades_faltando <- especialidades_faltando + esp_clinico_geral
+                        falhas_cli <- falhas_cli + 1
+                     fimse
+                     se av_esp = 3 entao
+                        especialidades_faltando <- especialidades_faltando + esp_cirurgiao
+                        falhas_cir <- falhas_cir + 1
+                     fimse
+                  fimse
+
+               fimpara
+
+               se especialidades_faltando <> "" entao
+
+                  qtd_turnos_insuficientes <- qtd_turnos_insuficientes + 1
+
+                  se av_dia = 1 entao
+                     escreva("Segunda-Feira")
+                  fimse
+                  se av_dia = 2 entao
+                     escreva("Terca-Feira")
+                  fimse
+                  se av_dia = 3 entao
+                     escreva("Quarta-Feira")
+                  fimse
+                  se av_dia = 4 entao
+                     escreva("Quinta-Feira")
+                  fimse
+                  se av_dia = 5 entao
+                     escreva("Sexta-Feira")
+                  fimse
+
+                  se av_turno = 1 entao
+                     escreva(" | Manha")
+                  fimse
+                  se av_turno = 2 entao
+                     escreva(" | Tarde")
+                  fimse
+                  se av_turno = 3 entao
+                     escreva(" | Noite")
+                  fimse
+
+                  escreval(" | Falta: ", especialidades_faltando)
+
+               fimse
+
+            fimpara
+         fimpara
+
+         escreval(" ")
+
+         se qtd_turnos_insuficientes = 0 entao
+            escreval("Todos os turnos da semana estao com cobertura completa.")
+         senao
+            escreval("Total de turnos com cobertura insuficiente: ", qtd_turnos_insuficientes)
+            escreval("Falhas por especialidade:")
+            escreval("   ", esp_pediatra, ": ", falhas_ped)
+            escreval("   ", esp_clinico_geral, ": ", falhas_cli)
+            escreval("   ", esp_cirurgiao, ": ", falhas_cir)
+         fimse
+
+         escreval("----------------------------------------")
+
+
          escreval(" ")
 
          escreval("----------------------------------------")
