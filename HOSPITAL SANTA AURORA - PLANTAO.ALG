@@ -54,6 +54,17 @@ Var
    trabalhou_noite_anterior, quer_manha: logico
    especialidades_faltando: caractere
 
+   // R10 E R11 - INDICADORES DE ESCALACAO
+   r_carga: vetor[1..25] de inteiro
+   r_cobertura: vetor[1..15,1..3] de inteiro
+   r_visto: vetor[1..25,1..15] de logico
+   r_id, r_dia, r_turno, r_esp, r_indice: inteiro
+   r_codigo, r_total, r_maior, r_menor: inteiro
+   r_cobertos, r_faltas, r_minimo, r_turno_ok: inteiro
+   r_falha_ped, r_falha_cli, r_falha_cir: inteiro
+   r_media, r_percentual: real
+   r_inclui: logico
+
 Inicio
 
    // IDENTIFICACAO DAS ESPECIALIDADES
@@ -477,6 +488,7 @@ Inicio
       escreval("3 - Procurar ID")
       escreval("4 - Atribuir Semana")
       escreval("5 - Resetar escala")
+      escreval("6 - Relatorio semanal")
       escreval("0 - Finalizar o plantao")
       escreval("----------------------------------------")
       escreva("Escolha uma opcao: ")
@@ -2161,6 +2173,140 @@ Inicio
          escreval(" ")
          escreval("Retornando ao menu principal...")
 
+
+      caso 6
+         limpatela
+         escreval("========================================")
+         escreval("     RELATORIO SEMANAL")
+         escreval("========================================")
+
+         r_total <- 0
+         para r_id de 1 ate 25 faca
+            r_carga[r_id] <- 0
+            para r_indice de 1 ate 15 faca
+               r_visto[r_id,r_indice] <- falso
+            fimpara
+         fimpara
+         para r_indice de 1 ate 15 faca
+            para r_esp de 1 ate 3 faca
+               r_cobertura[r_indice,r_esp] <- 0
+            fimpara
+         fimpara
+
+         // Cada registro pode representar um ou dois turnos.
+         // r_visto evita contar duas vezes o mesmo medico no mesmo turno.
+         para i de 1 ate qtd_disp faca
+            r_id <- id_disponibilidade[i]
+            r_dia <- semana[i]
+            r_codigo <- disp_registro[i]
+            se (r_id >= 1) e (r_id <= qtd_cad_medicos) e (r_dia >= 1) e (r_dia <= 5) entao
+               para r_turno de 1 ate 3 faca
+                  r_inclui <- falso
+                  se (r_turno = 1) e ((r_codigo = 1) ou (r_codigo = 4) ou (r_codigo = 5)) entao
+                     r_inclui <- verdadeiro
+                  fimse
+                  se (r_turno = 2) e ((r_codigo = 2) ou (r_codigo = 4) ou (r_codigo = 6)) entao
+                     r_inclui <- verdadeiro
+                  fimse
+                  se (r_turno = 3) e ((r_codigo = 3) ou (r_codigo = 5) ou (r_codigo = 6)) entao
+                     r_inclui <- verdadeiro
+                  fimse
+                  r_indice <- (r_dia - 1) * 3 + r_turno
+                  se r_inclui e (nao r_visto[r_id,r_indice]) entao
+                     r_visto[r_id,r_indice] <- verdadeiro
+                     r_esp <- especialidade_medico[r_id]
+                     se (r_esp >= 1) e (r_esp <= 3) entao
+                        r_carga[r_id] <- r_carga[r_id] + 1
+                        r_cobertura[r_indice,r_esp] <- r_cobertura[r_indice,r_esp] + 1
+                        r_total <- r_total + 1
+                     fimse
+                  fimse
+               fimpara
+            fimse
+         fimpara
+
+         se qtd_cad_medicos = 0 entao
+            escreval("Nenhum medico cadastrado. Media indisponivel.")
+         senao
+            r_media <- r_total / qtd_cad_medicos
+            r_maior <- r_carga[1]
+            r_menor <- r_carga[1]
+            para r_id de 1 ate qtd_cad_medicos faca
+               se r_carga[r_id] > r_maior entao
+                  r_maior <- r_carga[r_id]
+               fimse
+               se r_carga[r_id] < r_menor entao
+                  r_menor <- r_carga[r_id]
+               fimse
+            fimpara
+            escreval("Total de plantoes: ", r_total)
+            escreval("Media da equipe: ", r_media:5:2)
+            escreval("Maior carga: ", r_maior)
+            escreval("Menor carga: ", r_menor)
+            para r_id de 1 ate qtd_cad_medicos faca
+               escreva("ID ", r_id, " - ", nome_medico[r_id], ": ", r_carga[r_id], " plantoes")
+               se r_carga[r_id] > r_media + 1 entao
+                  escreval(" - SOBRECARREGADO")
+               senao
+                  escreval(" - sem sobrecarga")
+               fimse
+               se r_carga[r_id] = r_maior entao
+                  escreval("  Maior carga (empate possivel)")
+               fimse
+               se r_carga[r_id] = r_menor entao
+                  escreval("  Menor carga (empate possivel)")
+               fimse
+            fimpara
+         fimse
+
+         r_cobertos <- 0
+         r_falha_ped <- 0
+         r_falha_cli <- 0
+         r_falha_cir <- 0
+         r_faltas <- 0
+         para r_dia de 1 ate 5 faca
+            para r_turno de 1 ate 3 faca
+               r_indice <- (r_dia - 1) * 3 + r_turno
+               r_turno_ok <- 1
+               escreval("Dia ", r_dia, " - Turno ", r_turno)
+               para r_esp de 1 ate 3 faca
+                  r_minimo <- 1
+                  se r_esp = 2 entao
+                     r_minimo <- 2
+                  fimse
+                  se r_cobertura[r_indice,r_esp] < r_minimo entao
+                     r_turno_ok <- 0
+                     r_faltas <- r_faltas + r_minimo - r_cobertura[r_indice,r_esp]
+                     escolha r_esp
+                     caso 1
+                        r_falha_ped <- r_falha_ped + 1
+                        escreval("  Faltam ", r_minimo - r_cobertura[r_indice,r_esp], " Pediatra(s)")
+                     caso 2
+                        r_falha_cli <- r_falha_cli + 1
+                        escreval("  Faltam ", r_minimo - r_cobertura[r_indice,r_esp], " Clinico(s) Geral(is)")
+                     caso 3
+                        r_falha_cir <- r_falha_cir + 1
+                        escreval("  Faltam ", r_minimo - r_cobertura[r_indice,r_esp], " Cirurgiao(oes)")
+                     fimescolha
+                  fimse
+               fimpara
+               se r_turno_ok = 1 entao
+                  r_cobertos <- r_cobertos + 1
+                  escreval("  Cobertura completa")
+               fimse
+            fimpara
+         fimpara
+         r_percentual <- r_cobertos * 100 / 15
+         escreval("Turnos completos: ", r_cobertos, "/15 (", r_percentual:5:2, "%)")
+         escreval("Falhas em turnos - Pediatria: ", r_falha_ped)
+         escreval("Falhas em turnos - Clinica Geral: ", r_falha_cli)
+         escreval("Falhas em turnos - Cirurgia: ", r_falha_cir)
+         escreval("Postos sem cobertura: ", r_faltas)
+         se r_cobertos = 15 entao
+            escreval("SEMANA PLENAMENTE COBERTA")
+         senao
+            escreval("SEMANA COM COBERTURA INSUFICIENTE")
+         fimse
 
       caso 0
 
@@ -4214,7 +4360,6 @@ Inicio
 
          escreval("----------------------------------------")
 fimalgoritmo
-
 outrocaso
    limpatela
    escreval("Op��o inv�lida!")
